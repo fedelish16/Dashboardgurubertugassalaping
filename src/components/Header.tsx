@@ -45,6 +45,9 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="no-print bg-white border-b border-stone-200 sticky top-0 z-30 shadow-xs">
+      {/* Top Royal Accent Line (Maroon + Kuning + Maroon) */}
+      <div className="h-1.5 w-full bg-gradient-to-r from-maroon-950 via-kuning-400 to-maroon-950" />
+
       {/* Top Bar: School Identity & User Context */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-stone-100">
@@ -58,7 +61,7 @@ export const Header: React.FC<HeaderProps> = ({
                   {tetapan.sekolah || 'Sistem Guru Bertugas'}
                 </h1>
                 {tetapan.kod_sekolah && (
-                  <span className="hidden md:inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-stone-100 text-stone-600 border border-stone-200">
+                  <span className="hidden md:inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-kuning-50 text-kuning-900 border border-kuning-300">
                     {tetapan.kod_sekolah}
                   </span>
                 )}
@@ -86,7 +89,7 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="relative group">
               <label htmlFor="user-switch-select" className="sr-only">Tukar Pengguna</label>
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-stone-200 bg-stone-50/80 hover:bg-stone-100 transition-colors">
-                <div className={`w-2 h-2 rounded-full ${isAdmin ? 'bg-amber-500 ring-2 ring-amber-200' : 'bg-emerald-500 ring-2 ring-emerald-200'}`} />
+                <div className={`w-2.5 h-2.5 rounded-full ${isAdmin ? 'bg-kuning-500 ring-2 ring-kuning-200' : 'bg-maroon-700 ring-2 ring-maroon-200'}`} />
                 <div className="text-left text-xs">
                   <span className="text-stone-400 block text-[10px] uppercase font-bold tracking-wider">
                     {isAdmin ? 'Akses Pentadbir' : 'Akses Guru'}
@@ -133,10 +136,10 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 type="button"
                 onClick={onOpenAuth}
-                className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg transition-colors cursor-pointer shadow-2xs"
+                className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 text-xs font-bold text-maroon-900 bg-kuning-100 hover:bg-kuning-200 border border-kuning-300 rounded-lg transition-colors cursor-pointer shadow-2xs"
                 title="Buka Portal Log Masuk & Daftar Guru DELIMa"
               >
-                <LogIn className="w-3.5 h-3.5 text-emerald-700" />
+                <LogIn className="w-3.5 h-3.5 text-maroon-800" />
                 <span className="hidden sm:inline">Akses DELIMa</span>
               </button>
             )}
@@ -162,8 +165,8 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => setTab('dashboard')}
             className={`inline-flex items-center gap-2 px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg whitespace-nowrap transition-colors cursor-pointer ${
               tab === 'dashboard'
-                ? 'bg-emerald-800 text-white shadow-xs'
-                : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
+                ? 'bg-maroon-800 text-white shadow-xs border-b-2 border-kuning-400'
+                : 'text-stone-600 hover:text-maroon-900 hover:bg-maroon-50/70'
             }`}
           >
             <LayoutDashboard className="w-4 h-4" />
@@ -174,8 +177,8 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => setTab('jadual')}
             className={`inline-flex items-center gap-2 px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg whitespace-nowrap transition-colors cursor-pointer ${
               tab === 'jadual'
-                ? 'bg-emerald-800 text-white shadow-xs'
-                : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
+                ? 'bg-maroon-800 text-white shadow-xs border-b-2 border-kuning-400'
+                : 'text-stone-600 hover:text-maroon-900 hover:bg-maroon-50/70'
             }`}
           >
             <Calendar className="w-4 h-4" />
@@ -186,11 +189,11 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => setTab('agihan')}
             className={`inline-flex items-center gap-2 px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg whitespace-nowrap transition-colors cursor-pointer ${
               tab === 'agihan'
-                ? 'bg-emerald-800 text-white shadow-xs'
-                : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
+                ? 'bg-maroon-800 text-white shadow-xs border-b-2 border-kuning-400'
+                : 'text-stone-600 hover:text-maroon-900 hover:bg-maroon-50/70'
             }`}
           >
-            <Wand2 className="w-4 h-4 text-emerald-400" />
+            <Wand2 className="w-4 h-4 text-kuning-400" />
             <span>Agihan Tugas</span>
           </button>
 
@@ -198,8 +201,8 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => setTab('harian')}
             className={`inline-flex items-center gap-2 px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg whitespace-nowrap transition-colors cursor-pointer ${
               tab === 'harian'
-                ? 'bg-emerald-800 text-white shadow-xs'
-                : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
+                ? 'bg-maroon-800 text-white shadow-xs border-b-2 border-kuning-400'
+                : 'text-stone-600 hover:text-maroon-900 hover:bg-maroon-50/70'
             }`}
           >
             <FileText className="w-4 h-4" />
@@ -210,8 +213,8 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => setTab('mingguan')}
             className={`inline-flex items-center gap-2 px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg whitespace-nowrap transition-colors cursor-pointer ${
               tab === 'mingguan'
-                ? 'bg-emerald-800 text-white shadow-xs'
-                : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
+                ? 'bg-maroon-800 text-white shadow-xs border-b-2 border-kuning-400'
+                : 'text-stone-600 hover:text-maroon-900 hover:bg-maroon-50/70'
             }`}
           >
             <FileCheck2 className="w-4 h-4" />
@@ -222,8 +225,8 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => setTab('tetapan')}
             className={`inline-flex items-center gap-2 px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg whitespace-nowrap transition-colors cursor-pointer ${
               tab === 'tetapan'
-                ? 'bg-emerald-800 text-white shadow-xs'
-                : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
+                ? 'bg-maroon-800 text-white shadow-xs border-b-2 border-kuning-400'
+                : 'text-stone-600 hover:text-maroon-900 hover:bg-maroon-50/70'
             }`}
           >
             <Settings className="w-4 h-4" />

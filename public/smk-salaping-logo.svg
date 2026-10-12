@@ -10,26 +10,35 @@
                Z" />
     </clipPath>
 
-    <!-- Linear gradients for rich depth -->
-    <linearGradient id="tealGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#18B8A6" />
-      <stop offset="100%" stop-color="#149E8E" />
+    <!-- Authentic Turquoise / Teal gradients for the official shield -->
+    <linearGradient id="shieldTurquoiseGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#22BFB6" />
+      <stop offset="100%" stop-color="#199E95" />
     </linearGradient>
+
+    <!-- Authentic Space gradient for astronomy STEM quadrant -->
     <linearGradient id="spaceGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#111538" />
-      <stop offset="50%" stop-color="#1F1B4E" />
-      <stop offset="100%" stop-color="#0A0D26" />
+      <stop offset="0%" stop-color="#12163A" />
+      <stop offset="50%" stop-color="#1C214E" />
+      <stop offset="100%" stop-color="#0B0E28" />
     </linearGradient>
+
+    <!-- Rolled Certificate Scroll 3D Red Gradient -->
     <linearGradient id="scrollGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#F03A30" />
-      <stop offset="70%" stop-color="#D32118" />
-      <stop offset="100%" stop-color="#9C140E" />
+      <stop offset="0%" stop-color="#EF4444" />
+      <stop offset="60%" stop-color="#DC2626" />
+      <stop offset="100%" stop-color="#991B1B" />
     </linearGradient>
-    <linearGradient id="ribbonWhiteGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="100%" stop-color="#F2FAF9" />
+
+    <!-- Ribbon Turquoise Gradient matching the authentic badge -->
+    <linearGradient id="ribbonTurquoiseGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#24C4BA" />
+      <stop offset="100%" stop-color="#17968E" />
     </linearGradient>
   </defs>
+
+  <!-- Black Background Canvas (matching the original badge photo) -->
+  <rect width="500" height="500" fill="#000000" rx="40" />
 
   <!-- Outer Black Shield Outline / Shadow -->
   <path d="M 46 26 
@@ -40,7 +49,7 @@
            Q 30 410 30 330 
            Q 30 315 30 42 
            A 16 16 0 0 1 46 26 Z" 
-        fill="#0A0E0D" />
+        fill="#000000" />
 
   <!-- Outer Thick White Border -->
   <path d="M 52 32 
@@ -53,18 +62,18 @@
            A 10 10 0 0 1 52 32 Z" 
         fill="#FFFFFF" />
 
-  <!-- Main Teal Shield Body -->
+  <!-- Main Authentic Turquoise Shield Body -->
   <path d="M 60 40 
            Q 250 35 440 40 
            Q 440 280 440 300 
            Q 440 370 250 435 
            Q 60 370 60 300 
            Z" 
-        fill="url(#tealGrad)" />
+        fill="url(#shieldTurquoiseGrad)" />
 
   <!-- Shield Inner Content -->
   <g clip-path="url(#shield-inner-clip)">
-    <!-- Header Text: SMK SALAPING -->
+    <!-- Header Text: SMK SALAPING (Bold White) -->
     <text x="250" y="82" 
           text-anchor="middle" 
           font-family="'Plus Jakarta Sans', system-ui, Arial, sans-serif" 
@@ -75,123 +84,134 @@
 
     <!-- Top Left Quadrant: Bright Yellow with Red Certificate Scroll -->
     <g transform="translate(68, 100)">
-      <rect x="0" y="0" width="176" height="158" fill="#FDD21B" stroke="#FFFFFF" stroke-width="3" rx="2" />
+      <!-- Yellow Background with White Border -->
+      <rect x="0" y="0" width="176" height="158" fill="#F8CF2A" stroke="#FFFFFF" stroke-width="3" rx="2" />
       
       <!-- Rolled Scroll -->
       <g transform="translate(14, 20) rotate(-32 60 60)">
-        <!-- Scroll Body Cylindrical -->
+        <!-- Scroll Body Cylindrical (Red) -->
         <rect x="18" y="32" width="115" height="38" rx="6" fill="url(#scrollGrad)" />
-        <ellipse cx="18" cy="51" rx="9" ry="19" fill="#B71C14" />
-        <ellipse cx="18" cy="51" rx="6" ry="15" fill="#FFE082" />
-        <ellipse cx="133" cy="51" rx="9" ry="19" fill="#F03A30" />
+        <ellipse cx="18" cy="51" rx="9" ry="19" fill="#B91C1C" />
+        <ellipse cx="18" cy="51" rx="6" ry="15" fill="#FEE2E2" />
+        <ellipse cx="133" cy="51" rx="9" ry="19" fill="#EF4444" />
+        <ellipse cx="133" cy="51" rx="6" ry="15" fill="#DC2626" />
         
-        <!-- Ribbon Tie on Scroll -->
-        <rect x="66" y="30" width="12" height="42" rx="3" fill="#38D7C4" />
-        <!-- Ribbon Bow Tails -->
-        <path d="M 68 70 Q 60 92 50 98 Q 65 90 72 72 Z" fill="#20B2AA" />
-        <path d="M 74 70 Q 82 92 92 98 Q 78 90 72 72 Z" fill="#20B2AA" />
+        <!-- Authentic Turquoise Ribbon Tie on Scroll (matching user's badge photo) -->
+        <rect x="66" y="30" width="12" height="42" rx="3" fill="#24C4BA" stroke="#FFFFFF" stroke-width="1" />
+        <!-- Ribbon Bow Tails in Turquoise -->
+        <path d="M 68 70 Q 60 92 50 98 Q 65 90 72 72 Z" fill="#17968E" />
+        <path d="M 74 70 Q 82 92 92 98 Q 78 90 72 72 Z" fill="#17968E" />
       </g>
     </g>
 
     <!-- Top Right Quadrant: Deep Space with Saturn, Satellite & Stars -->
     <g transform="translate(256, 100)">
+      <!-- Deep Space Background with White Border -->
       <rect x="0" y="0" width="176" height="158" fill="url(#spaceGrad)" stroke="#FFFFFF" stroke-width="3" rx="2" />
       
-      <!-- Stars & Nebulae -->
-      <circle cx="20" cy="50" r="3" fill="#FFFFFF" opacity="0.8" />
+      <!-- Stars & Cosmic Nebulae Dots -->
+      <circle cx="20" cy="50" r="3.5" fill="#FFFFFF" opacity="0.85" />
       <circle cx="50" cy="20" r="2.5" fill="#FFFFFF" opacity="0.9" />
-      <circle cx="85" cy="70" r="2" fill="#FFFFFF" opacity="0.8" />
-      <circle cx="150" cy="35" r="3.5" fill="#FFFFFF" opacity="0.9" />
-      <circle cx="160" cy="120" r="2.5" fill="#FFFFFF" opacity="0.7" />
-      <circle cx="30" cy="130" r="3" fill="#FFFFFF" opacity="0.85" />
-      <circle cx="115" cy="140" r="2" fill="#FFFFFF" opacity="0.7" />
+      <circle cx="85" cy="70" r="2.5" fill="#FFFFFF" opacity="0.8" />
+      <circle cx="150" cy="35" r="4" fill="#FFFFFF" opacity="0.95" />
+      <circle cx="160" cy="120" r="3" fill="#FFFFFF" opacity="0.75" />
+      <circle cx="30" cy="130" r="3.5" fill="#FFFFFF" opacity="0.85" />
+      <circle cx="115" cy="140" r="2.5" fill="#FFFFFF" opacity="0.7" />
+      <circle cx="70" cy="125" r="3" fill="#E0E7FF" opacity="0.6" />
+      <circle cx="135" cy="80" r="2" fill="#E0E7FF" opacity="0.8" />
 
       <!-- Satellite in upper left of quadrant -->
       <g transform="translate(50, 24) rotate(35)">
         <!-- Satellite body -->
-        <rect x="-8" y="-6" width="16" height="12" rx="2" fill="#FFFFFF" stroke="#D32F2F" stroke-width="2" />
-        <circle cx="0" cy="0" r="3" fill="#D32F2F" />
+        <rect x="-8" y="-6" width="16" height="12" rx="2" fill="#FFFFFF" stroke="#DC2626" stroke-width="2" />
+        <circle cx="0" cy="0" r="3" fill="#DC2626" />
         <!-- Solar Panels -->
-        <rect x="-24" y="-5" width="14" height="10" rx="1" fill="#E53935" stroke="#FFFFFF" stroke-width="1.5" />
-        <rect x="10" y="-5" width="14" height="10" rx="1" fill="#E53935" stroke="#FFFFFF" stroke-width="1.5" />
+        <rect x="-24" y="-5" width="14" height="10" rx="1" fill="#EF4444" stroke="#FFFFFF" stroke-width="1.5" />
+        <rect x="10" y="-5" width="14" height="10" rx="1" fill="#EF4444" stroke="#FFFFFF" stroke-width="1.5" />
       </g>
 
       <!-- Planet Saturn & Concentric Orbital Rings -->
       <g transform="translate(90, 88)">
-        <!-- Planet behind rings -->
-        <circle cx="0" cy="0" r="24" fill="#E53935" />
-        <!-- Rings Ellipses (Angled) -->
+        <!-- Red Planet behind rings -->
+        <circle cx="0" cy="0" r="24" fill="#E11D48" />
+        <!-- Concentric Angled Elliptical Orbital Rings (White) -->
         <ellipse cx="0" cy="0" rx="66" ry="24" fill="none" stroke="#FFFFFF" stroke-width="3" transform="rotate(-24)" />
         <ellipse cx="0" cy="0" rx="55" ry="19" fill="none" stroke="#FFFFFF" stroke-width="2.5" transform="rotate(-24)" />
         <ellipse cx="0" cy="0" rx="42" ry="14" fill="none" stroke="#FFFFFF" stroke-width="2" transform="rotate(-24)" />
-        <!-- Satellite orbiter ball on ring -->
+        <!-- Satellite orbiter ball on outer ring -->
         <circle cx="52" cy="-22" r="4.5" fill="#FFFFFF" />
       </g>
     </g>
 
-    <!-- Lower Section: Open Book -->
+    <!-- Lower Section: Open Book (White Pages with Red Base) -->
     <g transform="translate(250, 290)">
-      <!-- Book spine/bottom shadow -->
-      <path d="M -102 -6 Q 0 16 102 -6 L 98 14 Q 0 34 -98 14 Z" fill="#991B1B" />
+      <!-- Book bottom shadow / red spine base -->
+      <path d="M -102 -6 Q 0 16 102 -6 L 98 16 Q 0 36 -98 16 Z" fill="#991B1B" />
       
       <!-- Red Cover Edge -->
-      <path d="M -100 -2 Q 0 18 100 -2 L 96 10 Q 0 28 -96 10 Z" fill="#D32F2F" />
+      <path d="M -100 -2 Q 0 18 100 -2 L 96 12 Q 0 30 -96 12 Z" fill="#DC2626" />
 
-      <!-- Left Page -->
-      <path d="M 0 16 Q -55 -12 -96 2 Q -65 -32 0 -18 Z" fill="#FFFFFF" stroke="#C53030" stroke-width="3" />
-      <!-- Right Page -->
-      <path d="M 0 16 Q 55 -12 96 2 Q 65 -32 0 -18 Z" fill="#FFFFFF" stroke="#C53030" stroke-width="3" />
+      <!-- Left White Page -->
+      <path d="M 0 16 Q -55 -12 -96 2 Q -65 -32 0 -18 Z" fill="#FFFFFF" stroke="#DC2626" stroke-width="3" />
+      <!-- Right White Page -->
+      <path d="M 0 16 Q 55 -12 96 2 Q 65 -32 0 -18 Z" fill="#FFFFFF" stroke="#DC2626" stroke-width="3" />
       
       <!-- Inner Page lines/crease -->
       <path d="M 0 -18 L 0 16" stroke="#991B1B" stroke-width="3" />
-      <path d="M -10 6 Q -50 -10 -84 1" stroke="#EF9A9A" stroke-width="2" fill="none" />
-      <path d="M 10 6 Q 50 -10 84 1" stroke="#EF9A9A" stroke-width="2" fill="none" />
+      <path d="M -10 6 Q -50 -10 -84 1" stroke="#FCA5A5" stroke-width="2" fill="none" />
+      <path d="M 10 6 Q 50 -10 84 1" stroke="#FCA5A5" stroke-width="2" fill="none" />
     </g>
 
-    <!-- Laurel Olive Wreath Leaves -->
+    <!-- Laurel Olive Wreath Leaves (Green) -->
     <g transform="translate(250, 360)">
-      <!-- Left Laurel Branch -->
-      <path d="M 0 10 Q -80 -10 -140 -50" fill="none" stroke="#166534" stroke-width="4.5" stroke-linecap="round" />
+      <!-- Left Laurel Branch Stem -->
+      <path d="M 0 10 Q -80 -10 -140 -50" fill="none" stroke="#1B5E20" stroke-width="4.5" stroke-linecap="round" />
       <!-- Left Leaves Pairs -->
-      <path d="M -30 4 Q -48 10 -40 -6 Q -26 -1 -30 4 Z" fill="#15803D" />
-      <path d="M -55 -4 Q -74 -2 -62 -18 Q -48 -10 -55 -4 Z" fill="#15803D" />
-      <path d="M -85 -16 Q -105 -18 -92 -34 Q -77 -24 -85 -16 Z" fill="#15803D" />
-      <path d="M -115 -32 Q -134 -40 -120 -54 Q -106 -42 -115 -32 Z" fill="#15803D" />
-      <path d="M -135 -48 Q -156 -62 -142 -76 Q -130 -62 -135 -48 Z" fill="#15803D" />
+      <path d="M -30 4 Q -48 10 -40 -6 Q -26 -1 -30 4 Z" fill="#2E7D32" />
+      <path d="M -55 -4 Q -74 -2 -62 -18 Q -48 -10 -55 -4 Z" fill="#2E7D32" />
+      <path d="M -85 -16 Q -105 -18 -92 -34 Q -77 -24 -85 -16 Z" fill="#2E7D32" />
+      <path d="M -115 -32 Q -134 -40 -120 -54 Q -106 -42 -115 -32 Z" fill="#2E7D32" />
+      <path d="M -135 -48 Q -156 -62 -142 -76 Q -130 -62 -135 -48 Z" fill="#2E7D32" />
 
-      <!-- Right Laurel Branch -->
-      <path d="M 0 10 Q 80 -10 140 -50" fill="none" stroke="#166534" stroke-width="4.5" stroke-linecap="round" />
+      <!-- Right Laurel Branch Stem -->
+      <path d="M 0 10 Q 80 -10 140 -50" fill="none" stroke="#1B5E20" stroke-width="4.5" stroke-linecap="round" />
       <!-- Right Leaves Pairs -->
-      <path d="M 30 4 Q 48 10 40 -6 Q 26 -1 30 4 Z" fill="#15803D" />
-      <path d="M 55 -4 Q 74 -2 62 -18 Q 48 -10 55 -4 Z" fill="#15803D" />
-      <path d="M 85 -16 Q 105 -18 92 -34 Q 77 -24 85 -16 Z" fill="#15803D" />
-      <path d="M 115 -32 Q 134 -40 120 -54 Q 106 -42 115 -32 Z" fill="#15803D" />
-      <path d="M 135 -48 Q 156 -62 142 -76 Q 130 -62 135 -48 Z" fill="#15803D" />
+      <path d="M 30 4 Q 48 10 40 -6 Q 26 -1 30 4 Z" fill="#2E7D32" />
+      <path d="M 55 -4 Q 74 -2 62 -18 Q 48 -10 55 -4 Z" fill="#2E7D32" />
+      <path d="M 85 -16 Q 105 -18 92 -34 Q 77 -24 85 -16 Z" fill="#2E7D32" />
+      <path d="M 115 -32 Q 134 -40 120 -54 Q 106 -42 115 -32 Z" fill="#2E7D32" />
+      <path d="M 135 -48 Q 156 -62 142 -76 Q 130 -62 135 -48 Z" fill="#2E7D32" />
     </g>
   </g>
 
-  <!-- Bottom Flowing Banner Ribbon -->
+  <!-- Bottom Flowing Banner Ribbon (Authentic Turquoise with White Border & White Text) -->
   <g id="bottom-ribbon" transform="translate(250, 436)">
-    <!-- Left Ribbon Fold & Tail -->
-    <path d="M -130 -28 L -205 -22 L -230 4 Q -200 45 -135 15 Z" fill="#0A0E0D" />
+    <!-- Left Ribbon Fold & Tail (Shadow & White Border) -->
+    <path d="M -130 -28 L -205 -22 L -230 4 Q -200 45 -135 15 Z" fill="#000000" />
     <path d="M -128 -24 L -200 -18 L -224 4 L -196 22 L -135 12 Z" fill="#FFFFFF" />
-    <path d="M -134 -20 L -194 -14 L -215 4 L -190 18 L -138 10 Z" fill="#16A396" />
+    <!-- Left Tail Turquoise Fill -->
+    <path d="M -134 -20 L -194 -14 L -215 4 L -190 18 L -138 10 Z" fill="url(#ribbonTurquoiseGrad)" />
+    <!-- Year 2006 in Authentic WHITE Text -->
     <text x="-174" y="8" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="24" font-weight="900" fill="#FFFFFF" text-anchor="middle">2006</text>
 
-    <!-- Right Ribbon Fold & Tail -->
-    <path d="M 130 -28 L 205 -22 L 230 4 Q 200 45 135 15 Z" fill="#0A0E0D" />
+    <!-- Right Ribbon Fold & Tail (Shadow & White Border) -->
+    <path d="M 130 -28 L 205 -22 L 230 4 Q 200 45 135 15 Z" fill="#000000" />
     <path d="M 128 -24 L 200 -18 L 224 4 L 196 22 L 135 12 Z" fill="#FFFFFF" />
-    <path d="M 134 -20 L 194 -14 L 215 4 L 190 18 L 138 10 Z" fill="#16A396" />
+    <!-- Right Tail Turquoise Fill -->
+    <path d="M 134 -20 L 194 -14 L 215 4 L 190 18 L 138 10 Z" fill="url(#ribbonTurquoiseGrad)" />
+    <!-- Year 1427 in Authentic WHITE Text -->
     <text x="174" y="8" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="24" font-weight="900" fill="#FFFFFF" text-anchor="middle">1427</text>
 
     <!-- Center Main Ribbon Background / Shadow -->
-    <path d="M -145 -36 Q 0 -6 145 -36 Q 165 42 0 65 Q -165 42 -145 -36 Z" fill="#0A0E0D" />
-    <!-- White Ribbon Outer -->
-    <path d="M -140 -30 Q 0 -2 140 -30 Q 155 36 0 57 Q -155 36 -140 -30 Z" fill="url(#ribbonWhiteGrad)" stroke="#16A396" stroke-width="4" />
+    <path d="M -145 -36 Q 0 -6 145 -36 Q 165 42 0 65 Q -165 42 -145 -36 Z" fill="#000000" />
+    <!-- Center Ribbon Thick White Outer Border -->
+    <path d="M -140 -30 Q 0 -2 140 -30 Q 155 36 0 57 Q -155 36 -140 -30 Z" fill="#FFFFFF" />
+    <!-- Center Ribbon Authentic Turquoise Fill -->
+    <path d="M -136 -26 Q 0 2 136 -26 Q 150 32 0 52 Q -150 32 -136 -26 Z" fill="url(#ribbonTurquoiseGrad)" />
 
-    <!-- Ribbon Motto Text: ILMUAN GEMILANG -->
-    <path id="ribbon-text-path" d="M -135 12 Q 0 42 135 12" fill="none" stroke="none" />
-    <text font-family="'Plus Jakarta Sans', system-ui, Arial, sans-serif" font-size="28" font-weight="900" fill="#118377" letter-spacing="2">
+    <!-- Ribbon Motto Text: ILMUAN GEMILANG (Authentic WHITE Text) -->
+    <path id="ribbon-text-path" d="M -135 14 Q 0 44 135 14" fill="none" stroke="none" />
+    <text font-family="'Plus Jakarta Sans', system-ui, Arial, sans-serif" font-size="28" font-weight="900" fill="#FFFFFF" letter-spacing="2">
       <textPath href="#ribbon-text-path" startOffset="50%" text-anchor="middle">
         ILMUAN GEMILANG
       </textPath>

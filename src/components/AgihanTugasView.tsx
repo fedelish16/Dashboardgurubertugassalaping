@@ -438,7 +438,7 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-1">
         <div>
           <h2 className="text-xl sm:text-2xl font-bold text-stone-900 tracking-tight flex items-center gap-2">
-            <Wand2 className="w-6 h-6 text-emerald-700" />
+            <Wand2 className="w-6 h-6 text-maroon-800" />
             <span>Agihan Tugas &amp; Takwim Persekolahan KPM</span>
           </h2>
           <p className="text-xs sm:text-sm text-stone-600 mt-1">
@@ -453,11 +453,11 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
             onClick={() => setActiveSection('penjana')}
             className={`px-3.5 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${
               activeSection === 'penjana'
-                ? 'bg-white text-emerald-950 shadow-xs'
+                ? 'bg-white text-maroon-950 font-bold shadow-xs border-b-2 border-kuning-400'
                 : 'text-stone-600 hover:text-stone-900'
             }`}
           >
-            <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
+            <Sparkles className="w-3.5 h-3.5 text-kuning-600" />
             <span>Penjana Takwim KPM</span>
           </button>
 
@@ -466,11 +466,11 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
             onClick={() => setActiveSection('muatnaik_guru')}
             className={`px-3.5 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${
               activeSection === 'muatnaik_guru'
-                ? 'bg-white text-emerald-950 shadow-xs'
+                ? 'bg-white text-maroon-950 font-bold shadow-xs border-b-2 border-kuning-400'
                 : 'text-stone-600 hover:text-stone-900'
             }`}
           >
-            <Users className="w-3.5 h-3.5 text-emerald-700" />
+            <Users className="w-3.5 h-3.5 text-maroon-800" />
             <span>Muat Naik Guru Sidang Pagi/Petang</span>
           </button>
         </div>
@@ -504,8 +504,8 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
           <div className="h-6 w-px bg-stone-200 hidden sm:block" />
 
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
-              <Users className="w-4 h-4 text-emerald-700" />
+            <div className="w-8 h-8 rounded-lg bg-maroon-100 text-maroon-900 border border-maroon-200 flex items-center justify-center font-bold">
+              <Users className="w-4 h-4 text-maroon-800" />
             </div>
             <div>
               <span className="text-[11px] text-stone-500 block uppercase font-semibold">Jumlah Keseluruhan Staf</span>
@@ -519,7 +519,7 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
             <button
               type="button"
               onClick={() => setActiveSection('muatnaik_guru')}
-              className="text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-lg cursor-pointer transition-colors"
+              className="text-xs font-bold text-maroon-900 bg-maroon-50 hover:bg-maroon-100 border border-maroon-200 px-3 py-1.5 rounded-lg cursor-pointer transition-colors"
             >
               + Muat Naik / Tambah Guru
             </button>
@@ -543,7 +543,7 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-stone-100 pb-3">
               <div>
                 <h3 className="font-bold text-stone-900 text-sm flex items-center gap-2">
-                  <Upload className="w-4 h-4 text-emerald-700" />
+                  <Upload className="w-4 h-4 text-maroon-800" />
                   <span>Muat Naik Fail Senarai Guru (Excel / CSV)</span>
                 </h3>
                 <p className="text-xs text-stone-500 mt-0.5">
@@ -555,9 +555,9 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
                 <button
                   type="button"
                   onClick={() => handleDownloadTeacherTemplate('xlsx')}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-emerald-900 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 rounded-lg cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-maroon-900 bg-maroon-50 hover:bg-maroon-100 border border-maroon-200 rounded-lg cursor-pointer"
                 >
-                  <Download className="w-3.5 h-3.5 text-emerald-700" />
+                  <Download className="w-3.5 h-3.5 text-maroon-800" />
                   <span>Templat Excel</span>
                 </button>
                 <button
@@ -575,12 +575,12 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
               <div
                 className={`p-3 rounded-lg text-xs flex items-center gap-2 ${
                   uploadMsg.success
-                    ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+                    ? 'bg-maroon-50 text-maroon-900 border border-maroon-200'
                     : 'bg-rose-50 text-rose-800 border border-rose-200'
                 }`}
               >
                 {uploadMsg.success ? (
-                  <CheckCircle2 className="w-4 h-4 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-maroon-700 shrink-0" />
                 ) : (
                   <AlertCircle className="w-4 h-4 shrink-0" />
                 )}
@@ -635,7 +635,7 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
 
             {/* Combined Single File Option */}
             <div className="pt-2 text-center border-t border-stone-100">
-              <label className="text-xs font-semibold text-emerald-800 hover:text-emerald-950 underline cursor-pointer inline-flex items-center gap-1.5">
+              <label className="text-xs font-semibold text-maroon-800 hover:text-maroon-950 underline cursor-pointer inline-flex items-center gap-1.5">
                 <Upload className="w-3.5 h-3.5" />
                 <span>Atau muat naik satu fail gabungan (mengandungi lajur nama dan sidang)</span>
                 <input
@@ -651,7 +651,7 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
           {/* Box 2: Quick Text Paste (Salin & Tampal Senarai Guru) */}
           <div className="bg-white p-5 rounded-xl border border-stone-200 shadow-xs space-y-4">
             <div className="flex items-center gap-2 border-b border-stone-100 pb-2">
-              <FileText className="w-4 h-4 text-emerald-700" />
+              <FileText className="w-4 h-4 text-maroon-800" />
               <h3 className="font-bold text-stone-900 text-sm">
                 Tampal Senarai Nama (Quick Paste dari WhatsApp / Word)
               </h3>
@@ -671,7 +671,7 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
                   onChange={(e) => setQuickPastePagi(e.target.value)}
                   rows={5}
                   placeholder="Contoh:&#10;Cikgu Muhammad Faiz bin Azlan&#10;Cikgu Dayang Roziana binti Jamil&#10;Ustaz Mohd Hanafi bin Razali"
-                  className="w-full text-xs p-3 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500 font-mono"
+                  className="w-full text-xs p-3 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600 font-mono"
                 />
               </div>
 
@@ -685,7 +685,7 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
                   onChange={(e) => setQuickPastePetang(e.target.value)}
                   rows={5}
                   placeholder="Contoh:&#10;Cikgu Alexius Justin&#10;Ustazah Maryam binti Kassim&#10;Cikgu Brenda Wong"
-                  className="w-full text-xs p-3 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500 font-mono"
+                  className="w-full text-xs p-3 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600 font-mono"
                 />
               </div>
             </div>
@@ -694,7 +694,7 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
               <button
                 type="button"
                 onClick={handleSaveQuickPaste}
-                className="px-4 py-2 rounded-lg bg-emerald-800 hover:bg-emerald-900 text-white font-bold text-xs transition-colors cursor-pointer shadow-xs"
+                className="px-4 py-2 rounded-lg bg-maroon-800 hover:bg-maroon-900 text-white font-bold text-xs transition-colors cursor-pointer shadow-xs border-b-2 border-kuning-400"
               >
                 Simpan &amp; Import Nama Guru
               </button>
@@ -710,12 +710,12 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
           <div className="no-print bg-white p-5 rounded-xl border border-stone-200 shadow-xs space-y-4">
             <div className="flex items-center justify-between border-b border-stone-100 pb-3">
               <div className="flex items-center gap-2">
-                <Settings2 className="w-4 h-4 text-emerald-700" />
+                <Settings2 className="w-4 h-4 text-maroon-800" />
                 <h3 className="font-bold text-stone-900 text-sm">
                   Parameter Penjana Takwim Persekolahan KPM 2026/2027
                 </h3>
               </div>
-              <span className="text-[11px] font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+              <span className="text-[11px] font-semibold text-maroon-900 bg-maroon-50 px-2.5 py-0.5 rounded-full border border-maroon-200">
                 Sesi 2026: 42 Minggu Persekolahan
               </span>
             </div>
@@ -729,7 +729,7 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
                 <select
                   value={tempohMod}
                   onChange={(e) => setTempohMod(e.target.value as any)}
-                  className="w-full text-xs font-semibold px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500 text-stone-800"
+                  className="w-full text-xs font-semibold px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600 text-stone-800"
                 >
                   <option value="semua_42">Seluruh Sesi Persekolahan KPM (42 Minggu)</option>
                   <option value="penggal1">Penggal 1 KPM Sahaja (10 Minggu Persekolahan)</option>
@@ -750,7 +750,7 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
                 <select
                   value={sesiSasaran}
                   onChange={(e) => setSesiSasaran(e.target.value as any)}
-                  className="w-full text-xs font-semibold px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500 text-stone-800"
+                  className="w-full text-xs font-semibold px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600 text-stone-800"
                 >
                   <option value="kedua">Kedua-dua Sidang (Pagi &amp; Petang Serentak)</option>
                   <option value="pagi">Sidang Pagi Sahaja</option>
@@ -773,7 +773,7 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
                 <select
                   value={kaedah}
                   onChange={(e) => setKaedah(e.target.value as any)}
-                  className="w-full text-xs font-semibold px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500 text-stone-800"
+                  className="w-full text-xs font-semibold px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600 text-stone-800"
                 >
                   <option value="kumpulan">Putaran Berkumpulan Tetap (Kumpulan 1, 2, 3...)</option>
                   <option value="seimbang">Giliran Berseimbang (Round-Robin Adil)</option>
@@ -794,7 +794,7 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
                   type="checkbox"
                   checked={kecualikanCutiKPM}
                   onChange={(e) => setKecualikanCutiKPM(e.target.checked)}
-                  className="rounded text-emerald-700 focus:ring-emerald-500 w-4 h-4 cursor-pointer"
+                  className="rounded text-maroon-800 focus:ring-maroon-500 w-4 h-4 cursor-pointer"
                 />
                 <span>
                   Kecualikan Minggu Cuti Penggal KPM (Tiada tugasan guru dijana semasa Cuti Penggal 1, 2, dan 3)
@@ -804,9 +804,9 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
               <button
                 type="button"
                 onClick={handleGenerateSchedule}
-                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-800 to-teal-800 hover:from-emerald-900 hover:to-teal-900 text-white font-bold text-xs shadow-md flex items-center gap-2 cursor-pointer transition-all"
+                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-maroon-950 via-maroon-900 to-maroon-800 hover:from-maroon-900 hover:to-maroon-750 text-white font-bold text-xs shadow-md flex items-center gap-2 cursor-pointer transition-all border border-kuning-400/40"
               >
-                <Sparkles className="w-4 h-4 text-emerald-300" />
+                <Sparkles className="w-4 h-4 text-kuning-400" />
                 <span>Jana Takwim Agihan KPM Sekarang</span>
               </button>
             </div>
@@ -816,15 +816,15 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
           {isGenerated && (
             <div className="space-y-6">
               {/* Action Bar: Apply to Active Schedule & Export */}
-              <div className="no-print bg-emerald-50 border border-emerald-200 rounded-2xl p-5 shadow-xs flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div className="no-print bg-maroon-50 border border-maroon-200 rounded-2xl p-5 shadow-xs flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-700" />
-                    <h3 className="font-bold text-emerald-950 text-base">
+                    <CheckCircle2 className="w-5 h-5 text-maroon-800" />
+                    <h3 className="font-bold text-maroon-950 text-base">
                       Takwim Agihan KPM Berjaya Dijana ({hasilAgihan.length} Minggu)
                     </h3>
                   </div>
-                  <p className="text-xs text-emerald-800 mt-1 max-w-2xl leading-relaxed">
+                  <p className="text-xs text-maroon-900 mt-1 max-w-2xl leading-relaxed">
                     Sistem telah menyusun guru mengikut sidang dan minggu persekolahan KPM 2026. Anda boleh memasukkannya ke dalam takwim jadual bertugas utama atau memuat turun fail Excel.
                   </p>
                 </div>
@@ -833,7 +833,7 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
                   <button
                     type="button"
                     onClick={() => handleApplyToActiveRoster('replace')}
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs shadow-xs transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-maroon-800 hover:bg-maroon-900 text-white font-bold text-xs shadow-xs transition-colors cursor-pointer border-b-2 border-kuning-400"
                     title="Gantikan semua jadual dengan agihan KPM ini"
                   >
                     <ArrowRight className="w-4 h-4" />
@@ -843,9 +843,9 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
                   <button
                     type="button"
                     onClick={handleExportFullExcel}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-white hover:bg-emerald-100 text-emerald-900 font-bold text-xs border border-emerald-300 transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-white hover:bg-maroon-50 text-maroon-950 font-bold text-xs border border-maroon-200 transition-colors cursor-pointer"
                   >
-                    <Download className="w-4 h-4 text-emerald-700" />
+                    <Download className="w-4 h-4 text-maroon-800" />
                     <span>Eksport Excel (.xlsx)</span>
                   </button>
 
@@ -929,7 +929,7 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
                             </td>
 
                             <td className="py-2.5 px-3 border border-stone-300 align-top whitespace-nowrap">
-                              <span className="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                              <span className="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-maroon-50 text-maroon-900 border border-maroon-200">
                                 {wk.kumpulanNama}
                               </span>
                             </td>

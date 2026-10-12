@@ -193,7 +193,7 @@ export const LaporanHarianView: React.FC<LaporanHarianViewProps> = ({
               aria-label="Pilih Tarikh Laporan"
               value={selectedDate}
               onChange={(e) => onSelectDate(e.target.value)}
-              className="text-xs sm:text-sm font-bold text-stone-800 bg-white border border-stone-200 rounded px-2.5 py-1 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="text-xs sm:text-sm font-bold text-stone-800 bg-white border border-stone-200 rounded px-2.5 py-1 focus:outline-none focus:ring-1 focus:ring-maroon-600"
             />
             <button
               type="button"
@@ -230,13 +230,13 @@ export const LaporanHarianView: React.FC<LaporanHarianViewProps> = ({
             <span
               className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold ${
                 status === 'Disahkan'
-                  ? 'bg-emerald-100 text-emerald-800 border border-emerald-200'
+                  ? 'bg-maroon-800 text-white border border-maroon-900 shadow-xs'
                   : status === 'Dihantar'
                   ? 'bg-amber-100 text-amber-800 border border-amber-200'
                   : 'bg-stone-100 text-stone-700 border border-stone-200'
               }`}
             >
-              {status === 'Disahkan' && <CheckCircle className="w-3.5 h-3.5 mr-1" />}
+              {status === 'Disahkan' && <CheckCircle className="w-3.5 h-3.5 mr-1 text-kuning-400" />}
               {status}
             </span>
           </div>
@@ -254,11 +254,11 @@ export const LaporanHarianView: React.FC<LaporanHarianViewProps> = ({
       </div>
 
       {/* Week Duty Teachers Bar */}
-      <div className="bg-emerald-50/70 border border-emerald-100 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="bg-maroon-50/70 border border-maroon-200/80 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-start sm:items-center gap-2.5">
-          <Users className="w-5 h-5 text-emerald-800 shrink-0 mt-0.5 sm:mt-0" />
+          <Users className="w-5 h-5 text-maroon-800 shrink-0 mt-0.5 sm:mt-0" />
           <div>
-            <span className="text-xs font-bold text-emerald-900 block sm:inline mr-2">
+            <span className="text-xs font-bold text-maroon-950 block sm:inline mr-2">
               Guru Bertugas Minggu Ini ({formatDDMMYYYY(currentMonday)}):
             </span>
             <div className="inline-flex flex-wrap gap-1.5 mt-1 sm:mt-0">
@@ -270,8 +270,8 @@ export const LaporanHarianView: React.FC<LaporanHarianViewProps> = ({
                     onClick={() => setPelapor(g.nama)}
                     className={`inline-flex items-center gap-1 text-xs px-2.5 py-0.5 rounded-full border transition-colors cursor-pointer ${
                       pelapor === g.nama
-                        ? 'bg-emerald-800 text-white border-emerald-900 font-bold'
-                        : 'bg-white text-emerald-900 border-emerald-200 hover:bg-emerald-100'
+                        ? 'bg-maroon-800 text-white border-maroon-900 font-bold'
+                        : 'bg-white text-maroon-900 border-maroon-200 hover:bg-maroon-100'
                     }`}
                     title="Klik untuk jadikan pelapor hari ini"
                   >
@@ -280,10 +280,10 @@ export const LaporanHarianView: React.FC<LaporanHarianViewProps> = ({
                       <span
                         className={`text-[9px] font-extrabold px-1 rounded uppercase ${
                           pelapor === g.nama
-                            ? 'bg-emerald-950 text-emerald-200'
+                            ? 'bg-kuning-400 text-maroon-950'
                             : g.sidang === 'pagi'
-                            ? 'bg-amber-100 text-amber-900'
-                            : 'bg-indigo-100 text-indigo-900'
+                            ? 'bg-kuning-100 text-kuning-900'
+                            : 'bg-stone-100 text-stone-700'
                         }`}
                       >
                         {g.sidang}
@@ -311,7 +311,7 @@ export const LaporanHarianView: React.FC<LaporanHarianViewProps> = ({
             value={pelapor}
             onChange={(e) => setPelapor(e.target.value)}
             placeholder="Nama guru yang mengisi"
-            className="text-xs px-2.5 py-1.5 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-emerald-600 min-w-[200px]"
+            className="text-xs px-2.5 py-1.5 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600 min-w-[200px]"
           />
           <datalist id="reporter-list">
             {weekTeachers.map((w, idx) => (
@@ -332,7 +332,7 @@ export const LaporanHarianView: React.FC<LaporanHarianViewProps> = ({
             <span
               className={`text-sm sm:text-base font-extrabold px-2.5 py-0.5 rounded-md ${
                 pctNum >= 95
-                  ? 'bg-emerald-100 text-emerald-800'
+                  ? 'bg-kuning-400 text-maroon-950 font-black'
                   : pctNum >= 90
                   ? 'bg-amber-100 text-amber-800'
                   : 'bg-rose-100 text-rose-800'
@@ -353,7 +353,7 @@ export const LaporanHarianView: React.FC<LaporanHarianViewProps> = ({
               min="0"
               value={jumlah}
               onChange={(e) => setJumlah(e.target.value === '' ? '' : Math.max(0, parseInt(e.target.value) || 0))}
-              className="w-full text-sm font-semibold px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="w-full text-sm font-semibold px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600"
             />
           </div>
 
@@ -367,7 +367,7 @@ export const LaporanHarianView: React.FC<LaporanHarianViewProps> = ({
               max={numJumlah}
               value={hadir}
               onChange={(e) => setHadir(e.target.value === '' ? '' : Math.max(0, parseInt(e.target.value) || 0))}
-              className="w-full text-sm font-semibold px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="w-full text-sm font-semibold px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600"
             />
           </div>
 
@@ -380,7 +380,7 @@ export const LaporanHarianView: React.FC<LaporanHarianViewProps> = ({
               min="0"
               value={lewat}
               onChange={(e) => setLewat(e.target.value === '' ? '' : Math.max(0, parseInt(e.target.value) || 0))}
-              className="w-full text-sm font-semibold px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 text-amber-900"
+              className="w-full text-sm font-semibold px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 text-amber-900"
             />
           </div>
 
@@ -393,7 +393,7 @@ export const LaporanHarianView: React.FC<LaporanHarianViewProps> = ({
               min="0"
               value={ponteng}
               onChange={(e) => setPonteng(e.target.value === '' ? '' : Math.max(0, parseInt(e.target.value) || 0))}
-              className="w-full text-sm font-semibold px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 text-rose-900"
+              className="w-full text-sm font-semibold px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 text-rose-900"
             />
           </div>
         </div>
@@ -403,7 +403,7 @@ export const LaporanHarianView: React.FC<LaporanHarianViewProps> = ({
           <div className="w-full bg-stone-100 rounded-full h-2.5 overflow-hidden">
             <div
               className={`h-full transition-all duration-300 ${
-                pctNum >= 95 ? 'bg-emerald-600' : pctNum >= 90 ? 'bg-amber-500' : 'bg-rose-500'
+                pctNum >= 95 ? 'bg-kuning-500' : pctNum >= 90 ? 'bg-amber-500' : 'bg-rose-500'
               }`}
               style={{ width: `${Math.min(100, Math.max(0, pctNum))}%` }}
             />
@@ -466,7 +466,7 @@ export const LaporanHarianView: React.FC<LaporanHarianViewProps> = ({
                       }}
                       className={`w-full text-xs font-bold px-3 py-2 rounded-lg border focus:outline-none transition-colors ${
                         currentItem.s === 'Cemerlang'
-                          ? 'bg-emerald-50 text-emerald-900 border-emerald-300'
+                          ? 'bg-kuning-50 text-maroon-950 border-kuning-400'
                           : currentItem.s === 'Baik'
                           ? 'bg-blue-50 text-blue-900 border-blue-300'
                           : currentItem.s === 'Sederhana'
@@ -497,7 +497,7 @@ export const LaporanHarianView: React.FC<LaporanHarianViewProps> = ({
                         });
                       }}
                       placeholder={`Catatan untuk ${domain.title.toLowerCase()}...`}
-                      className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                      className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600"
                     />
                   </div>
                 </div>
@@ -522,7 +522,7 @@ export const LaporanHarianView: React.FC<LaporanHarianViewProps> = ({
             onChange={(e) => setInsiden(e.target.value)}
             rows={4}
             placeholder="Contoh: Murid tahun 4 tergelincir di gelanggang waktu rehat. Diberi rawatan iodin dan pembalut di bilik kesihatan. Keadaan terkawal."
-            className="w-full text-xs px-3 py-2.5 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            className="w-full text-xs px-3 py-2.5 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600"
           />
         </div>
 
@@ -539,7 +539,7 @@ export const LaporanHarianView: React.FC<LaporanHarianViewProps> = ({
             onChange={(e) => setCadangan(e.target.value)}
             rows={4}
             placeholder="Contoh: Mohon pekerja swasta periksa paip tandas lelaki blok B. Cadangan mengadakan pemeriksaan mengejut kekemasan rambut murid tahap 2."
-            className="w-full text-xs px-3 py-2.5 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            className="w-full text-xs px-3 py-2.5 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600"
           />
         </div>
       </div>
@@ -548,13 +548,13 @@ export const LaporanHarianView: React.FC<LaporanHarianViewProps> = ({
       <div className="bg-stone-50 p-5 rounded-xl border border-stone-200 shadow-xs space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="w-5 h-5 text-emerald-800" />
+            <ShieldCheck className="w-5 h-5 text-maroon-800" />
             <h3 className="font-bold text-stone-900 text-sm sm:text-base">
               Ruangan Ulasan &amp; Pengesahan Pentadbir
             </h3>
           </div>
           {existing?.disahkan_oleh && (
-            <span className="text-xs font-semibold text-emerald-800 bg-emerald-100 px-2.5 py-1 rounded-full border border-emerald-200">
+            <span className="text-xs font-bold text-maroon-900 bg-kuning-100 px-2.5 py-1 rounded-full border border-kuning-300">
               Disahkan oleh {existing.disahkan_oleh}
             </span>
           )}
@@ -562,7 +562,7 @@ export const LaporanHarianView: React.FC<LaporanHarianViewProps> = ({
 
         <div>
           <label className="block text-xs font-semibold text-stone-700 mb-1">
-            Ulasan / Catatan Pentadbir (Guru Besar / Penolong Kanan)
+            Ulasan / Catatan Pentadbir (Pengetua / Penolong Kanan HEM)
           </label>
           <textarea
             value={komenPentadbir}
@@ -574,7 +574,7 @@ export const LaporanHarianView: React.FC<LaporanHarianViewProps> = ({
                 ? 'Masukkan maklum balas, arahan tindakan, atau pengesahan laporan di sini...'
                 : 'Ulasan rasmi pihak pentadbir sekolah.'
             }
-            className="w-full text-xs px-3 py-2.5 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 disabled:bg-stone-100 disabled:text-stone-500"
+            className="w-full text-xs px-3 py-2.5 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-maroon-700 disabled:bg-stone-100 disabled:text-stone-500"
           />
         </div>
 
@@ -593,9 +593,9 @@ export const LaporanHarianView: React.FC<LaporanHarianViewProps> = ({
             <button
               type="button"
               onClick={() => handleSave('Dihantar')}
-              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-emerald-800 hover:bg-emerald-900 rounded-lg transition-colors cursor-pointer shadow-xs"
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-maroon-800 hover:bg-maroon-900 rounded-lg transition-colors cursor-pointer shadow-xs border-b-2 border-kuning-400"
             >
-              <Send className="w-3.5 h-3.5" />
+              <Send className="w-3.5 h-3.5 text-kuning-300" />
               <span>Hantar Laporan</span>
             </button>
           </div>
@@ -606,15 +606,15 @@ export const LaporanHarianView: React.FC<LaporanHarianViewProps> = ({
               <button
                 type="button"
                 onClick={() => handleSave('Disahkan')}
-                className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-lg transition-colors cursor-pointer shadow-sm"
+                className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-maroon-900 hover:bg-maroon-950 rounded-lg transition-colors cursor-pointer shadow-sm border-b-2 border-kuning-400"
               >
-                <CheckCircle className="w-3.5 h-3.5" />
+                <CheckCircle className="w-3.5 h-3.5 text-kuning-300" />
                 <span>Sahkan &amp; Tandatangan Laporan</span>
               </button>
             </div>
           ) : (
             <p className="text-[11px] text-stone-500 italic">
-              Pengesahan rasmi dilakukan oleh Pentadbir (Guru Besar / PK HEM).
+              Pengesahan rasmi dilakukan oleh Pentadbir (Pengetua / PK HEM).
             </p>
           )}
         </div>

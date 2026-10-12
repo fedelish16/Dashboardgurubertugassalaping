@@ -619,7 +619,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
       {/* Page Header */}
       <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-xs flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 text-emerald-800 text-xs font-bold uppercase tracking-wider mb-1">
+          <div className="flex items-center gap-2 text-maroon-800 text-xs font-bold uppercase tracking-wider mb-1">
             <School className="w-4 h-4" />
             <span>Pusat Kawalan &amp; Konfigurasi Sistem</span>
           </div>
@@ -653,11 +653,11 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
           onClick={() => setActiveTab('profil')}
           className={`flex items-center gap-2 px-3.5 py-2 rounded-lg transition-all cursor-pointer whitespace-nowrap ${
             activeTab === 'profil'
-              ? 'bg-white text-emerald-900 shadow-xs font-bold'
+              ? 'bg-white text-maroon-950 shadow-xs font-bold border-b-2 border-kuning-400'
               : 'text-stone-600 hover:text-stone-900 hover:bg-stone-200/60'
           }`}
         >
-          <School className="w-4 h-4 text-emerald-700" />
+          <School className="w-4 h-4 text-maroon-800" />
           <span>Profil Sekolah</span>
         </button>
 
@@ -666,14 +666,14 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
           onClick={() => setActiveTab('imej')}
           className={`flex items-center gap-2 px-3.5 py-2 rounded-lg transition-all cursor-pointer whitespace-nowrap ${
             activeTab === 'imej'
-              ? 'bg-white text-emerald-900 shadow-xs font-bold'
+              ? 'bg-white text-maroon-950 shadow-xs font-bold border-b-2 border-kuning-400'
               : 'text-stone-600 hover:text-stone-900 hover:bg-stone-200/60'
           }`}
         >
           <ImageIcon className="w-4 h-4 text-indigo-600" />
           <span>Imej &amp; Logo</span>
           {tetapan.logo_url && (
-            <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block" />
+            <span className="w-2 h-2 rounded-full bg-kuning-500 inline-block" />
           )}
         </button>
 
@@ -682,7 +682,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
           onClick={() => setActiveTab('jadual')}
           className={`flex items-center gap-2 px-3.5 py-2 rounded-lg transition-all cursor-pointer whitespace-nowrap ${
             activeTab === 'jadual'
-              ? 'bg-white text-emerald-900 shadow-xs font-bold'
+              ? 'bg-white text-maroon-950 shadow-xs font-bold border-b-2 border-kuning-400'
               : 'text-stone-600 hover:text-stone-900 hover:bg-stone-200/60'
           }`}
         >
@@ -698,7 +698,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
           onClick={() => setActiveTab('guru')}
           className={`flex items-center gap-2 px-3.5 py-2 rounded-lg transition-all cursor-pointer whitespace-nowrap ${
             activeTab === 'guru'
-              ? 'bg-white text-emerald-900 shadow-xs font-bold'
+              ? 'bg-white text-maroon-950 shadow-xs font-bold border-b-2 border-kuning-400'
               : 'text-stone-600 hover:text-stone-900 hover:bg-stone-200/60'
           }`}
         >
@@ -714,7 +714,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
           onClick={() => setActiveTab('sandaran')}
           className={`flex items-center gap-2 px-3.5 py-2 rounded-lg transition-all cursor-pointer whitespace-nowrap ${
             activeTab === 'sandaran'
-              ? 'bg-white text-emerald-900 shadow-xs font-bold'
+              ? 'bg-white text-maroon-950 shadow-xs font-bold border-b-2 border-kuning-400'
               : 'text-stone-600 hover:text-stone-900 hover:bg-stone-200/60'
           }`}
         >
@@ -731,7 +731,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
           <div className="border-b border-stone-100 pb-3 flex items-center justify-between">
             <div>
               <h3 className="font-bold text-stone-900 text-base flex items-center gap-2">
-                <School className="w-5 h-5 text-emerald-700" />
+                <School className="w-5 h-5 text-maroon-800" />
                 <span>Maklumat Rasmi Profil Sekolah</span>
               </h3>
               <p className="text-xs text-stone-500 mt-0.5">
@@ -751,7 +751,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                   value={sekolah}
                   onChange={(e) => setSekolah(e.target.value)}
                   placeholder="Contoh: SMK Salaping, Kota Marudu"
-                  className="w-full text-xs sm:text-sm px-3.5 py-2.5 border border-stone-300 rounded-xl bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium"
+                  className="w-full text-xs sm:text-sm px-3.5 py-2.5 border border-stone-300 rounded-xl bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 font-medium"
                   required
                 />
               </div>
@@ -765,7 +765,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                   value={kodSekolah}
                   onChange={(e) => setKodSekolah(e.target.value)}
                   placeholder="XEA5101"
-                  className="w-full text-xs sm:text-sm px-3.5 py-2.5 border border-stone-300 rounded-xl bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 uppercase font-mono font-bold"
+                  className="w-full text-xs sm:text-sm px-3.5 py-2.5 border border-stone-300 rounded-xl bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 uppercase font-mono font-bold"
                   required
                 />
               </div>
@@ -780,7 +780,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                 value={alamat}
                 onChange={(e) => setAlamat(e.target.value)}
                 placeholder="Peti Surat 248, 89108 Kota Marudu, Sabah"
-                className="w-full text-xs sm:text-sm px-3.5 py-2.5 border border-stone-300 rounded-xl bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                className="w-full text-xs sm:text-sm px-3.5 py-2.5 border border-stone-300 rounded-xl bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600"
               />
             </div>
 
@@ -796,7 +796,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                     value={telefonSekolah}
                     onChange={(e) => setTelefonSekolah(e.target.value)}
                     placeholder="088-661234"
-                    className="w-full text-xs sm:text-sm pl-9 pr-3.5 py-2.5 border border-stone-300 rounded-xl bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="w-full text-xs sm:text-sm pl-9 pr-3.5 py-2.5 border border-stone-300 rounded-xl bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600"
                   />
                 </div>
               </div>
@@ -812,7 +812,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                     value={emelSekolah}
                     onChange={(e) => setEmelSekolah(e.target.value)}
                     placeholder="xea5101@moe.edu.my"
-                    className="w-full text-xs sm:text-sm pl-9 pr-3.5 py-2.5 border border-stone-300 rounded-xl bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="w-full text-xs sm:text-sm pl-9 pr-3.5 py-2.5 border border-stone-300 rounded-xl bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600"
                   />
                 </div>
               </div>
@@ -828,7 +828,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                   value={pentadbir}
                   onChange={(e) => setPentadbir(e.target.value)}
                   placeholder="Tuan Sanaleh bin Daud"
-                  className="w-full text-xs sm:text-sm px-3.5 py-2.5 border border-stone-300 rounded-xl bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 font-semibold"
+                  className="w-full text-xs sm:text-sm px-3.5 py-2.5 border border-stone-300 rounded-xl bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 font-semibold"
                   required
                 />
                 <span className="text-[11px] text-stone-500 mt-1 block">
@@ -845,7 +845,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                   value={jawatan}
                   onChange={(e) => setJawatan(e.target.value)}
                   placeholder="Pengetua / PK Hal Ehwal Murid"
-                  className="w-full text-xs sm:text-sm px-3.5 py-2.5 border border-stone-300 rounded-xl bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium"
+                  className="w-full text-xs sm:text-sm px-3.5 py-2.5 border border-stone-300 rounded-xl bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 font-medium"
                   required
                 />
               </div>
@@ -861,7 +861,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                   value={sesi}
                   onChange={(e) => setSesi(e.target.value)}
                   placeholder="2026/2027"
-                  className="w-full text-xs sm:text-sm px-3.5 py-2.5 border border-stone-300 rounded-xl bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="w-full text-xs sm:text-sm px-3.5 py-2.5 border border-stone-300 rounded-xl bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600"
                 />
               </div>
 
@@ -874,7 +874,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                   value={moto}
                   onChange={(e) => setMoto(e.target.value)}
                   placeholder="Ilmuan Gemilang"
-                  className="w-full text-xs sm:text-sm px-3.5 py-2.5 border border-stone-300 rounded-xl bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="w-full text-xs sm:text-sm px-3.5 py-2.5 border border-stone-300 rounded-xl bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600"
                 />
               </div>
             </div>
@@ -882,9 +882,9 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
             <div className="pt-3 flex justify-end">
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white font-bold text-xs sm:text-sm shadow-xs transition-colors cursor-pointer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-maroon-800 hover:bg-maroon-900 text-white font-bold text-xs sm:text-sm shadow-xs transition-colors cursor-pointer border-b-2 border-kuning-400"
               >
-                <Save className="w-4 h-4" />
+                <Save className="w-4 h-4 text-kuning-300" />
                 <span>Simpan Maklumat Profil Sekolah</span>
               </button>
             </div>
@@ -917,8 +917,8 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                     <span>Logo Kustom Aktif</span>
                   </span>
                 ) : (
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold">
-                    <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-maroon-50 border border-maroon-200 text-maroon-900 text-xs font-bold">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-maroon-700" />
                     <span>Lencana Rasmi SMK Salaping (Default)</span>
                   </span>
                 )}
@@ -966,6 +966,34 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                 </span>
                 <div className="w-20 h-20 p-1 rounded-xl bg-stone-50 border border-stone-200 flex items-center justify-center">
                   <SmkSalapingLogo className="w-full h-full" logoUrl={customLogoUrl} alt="Logo Penuh" />
+                </div>
+              </div>
+            </div>
+
+            {/* Authentic Badge Specification Card */}
+            <div className="p-4 rounded-xl bg-teal-50/60 border border-teal-200 text-xs space-y-2.5">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#1FB7B6] shrink-0"></span>
+                <h4 className="font-bold text-stone-900 text-xs">
+                  Ciri &amp; Struktur Rasmi Lencana SMK Salaping (Kekal Asli)
+                </h4>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2.5 text-[11px] text-stone-600">
+                <div className="p-2.5 rounded-lg bg-white border border-stone-200 shadow-2xs">
+                  <span className="font-bold text-stone-900 block mb-0.5">Perisai Toska Rasmi</span>
+                  Latar turquoise/toska rasmi (#199E95 - #22BFB6) dengan sempadan putih tebal &amp; tulisan tajuk putih.
+                </div>
+                <div className="p-2.5 rounded-lg bg-white border border-stone-200 shadow-2xs">
+                  <span className="font-bold text-stone-900 block mb-0.5">Kuadran Kuning &amp; Skrol</span>
+                  Latar kuning diraja dengan skrol sijil merah bergulung berikat reben toska rasmi.
+                </div>
+                <div className="p-2.5 rounded-lg bg-white border border-stone-200 shadow-2xs">
+                  <span className="font-bold text-stone-900 block mb-0.5">Kuadran Angkasa (STEM)</span>
+                  Angkasa malam berbintang, satelit orbit, dan planet Zuhal bergelung elips putih.
+                </div>
+                <div className="p-2.5 rounded-lg bg-white border border-stone-200 shadow-2xs">
+                  <span className="font-bold text-stone-900 block mb-0.5">Buku, Zaitun &amp; Reben</span>
+                  Buku putih bertapak merah, kalungan daun hijau, reben toska tulisan putih "ILMUAN GEMILANG 2006 / 1427".
                 </div>
               </div>
             </div>
@@ -1022,7 +1050,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                   <button
                     type="button"
                     onClick={handleResetDefaultLogo}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-maroon-900 bg-maroon-50 hover:bg-maroon-100 border border-maroon-200 rounded-lg transition-colors cursor-pointer"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
                     <span>Kembali ke Lencana Rasmi SMK Salaping</span>
@@ -1054,7 +1082,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
               <div className="border-b border-stone-100 pb-2 flex items-center justify-between">
                 <div>
                   <h4 className="font-bold text-stone-900 text-sm flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-emerald-700" />
+                    <ShieldCheck className="w-4 h-4 text-maroon-800" />
                     <span>Cap Mohor Rasmi Sekolah</span>
                   </h4>
                   <p className="text-[11px] text-stone-500 mt-0.5">
@@ -1190,7 +1218,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                 <button
                   type="button"
                   onClick={() => handleDownloadJadualTemplate('xlsx')}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-maroon-900 bg-maroon-50 hover:bg-maroon-100 border border-maroon-200 rounded-lg transition-colors cursor-pointer"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Muat Turun Templat Excel</span>
@@ -1216,12 +1244,12 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-emerald-50/60 border border-emerald-200">
-                <span className="text-[11px] font-bold text-emerald-900 uppercase">Minggu Diliputi</span>
-                <p className="text-2xl font-bold text-emerald-950 mt-1">
+              <div className="p-4 rounded-xl bg-maroon-50/60 border border-maroon-200">
+                <span className="text-[11px] font-bold text-maroon-900 uppercase">Minggu Diliputi</span>
+                <p className="text-2xl font-bold text-maroon-950 mt-1">
                   {new Set(jadual.map((j) => j.mula)).size} Minggu
                 </p>
-                <p className="text-[11px] text-emerald-800 mt-0.5">
+                <p className="text-[11px] text-maroon-800 mt-0.5">
                   Pusingan giliran bertugas
                 </p>
               </div>
@@ -1291,11 +1319,11 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
 
               {/* Preview of Imported Duty Roster */}
               {jadualPreview && (
-                <div className="p-5 rounded-2xl bg-white border-2 border-emerald-300 shadow-md space-y-4 animate-fade-in">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-emerald-100 pb-3">
+                <div className="p-5 rounded-2xl bg-white border-2 border-maroon-300 shadow-md space-y-4 animate-fade-in">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-maroon-100 pb-3">
                     <div>
-                      <div className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full mb-1">
-                        <CheckCircle2 className="w-3.5 h-3.5" />
+                      <div className="inline-flex items-center gap-1.5 text-xs font-bold text-maroon-900 bg-maroon-100 px-2.5 py-0.5 rounded-full mb-1">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-maroon-700" />
                         <span>Pratonton Fail Berjaya ({jadualPreview.length} Baris Dikesan)</span>
                       </div>
                       <p className="text-xs text-stone-600">
@@ -1317,9 +1345,9 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                       <button
                         type="button"
                         onClick={handleConfirmImportJadual}
-                        className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-lg shadow-xs cursor-pointer"
+                        className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-maroon-800 hover:bg-maroon-900 rounded-lg shadow-xs cursor-pointer border-b-2 border-kuning-400"
                       >
-                        <Save className="w-3.5 h-3.5" />
+                        <Save className="w-3.5 h-3.5 text-kuning-300" />
                         <span>Sahkan &amp; Masukkan ke Sistem</span>
                       </button>
                     </div>
@@ -1388,9 +1416,9 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                 <button
                   type="button"
                   onClick={() => setShowAddTeacher(!showAddTeacher)}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-white bg-emerald-800 hover:bg-emerald-900 rounded-xl transition-colors cursor-pointer shadow-xs"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-white bg-maroon-800 hover:bg-maroon-900 rounded-xl transition-colors cursor-pointer shadow-xs border-b-2 border-kuning-400"
                 >
-                  <Plus className="w-3.5 h-3.5" />
+                  <Plus className="w-3.5 h-3.5 text-kuning-300" />
                   <span>Daftar Guru Baharu</span>
                 </button>
 
@@ -1419,11 +1447,11 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
 
             {/* Add Teacher Collapsible Form */}
             {showAddTeacher && (
-              <div className="p-5 bg-emerald-50/50 border-b border-emerald-100 animate-fade-in">
+              <div className="p-5 bg-maroon-50/50 border-b border-maroon-100 animate-fade-in">
                 <form onSubmit={handleAddTeacher} className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-xs font-bold text-emerald-900 uppercase tracking-wider flex items-center gap-1.5">
-                      <Plus className="w-4 h-4" />
+                    <h4 className="text-xs font-bold text-maroon-950 uppercase tracking-wider flex items-center gap-1.5">
+                      <Plus className="w-4 h-4 text-maroon-800" />
                       <span>Daftar Guru / Pengguna Baharu</span>
                     </h4>
                     <button
@@ -1445,7 +1473,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                         value={newNama}
                         onChange={(e) => setNewNama(e.target.value)}
                         placeholder="Contoh: Cikgu Sarah Lee"
-                        className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500 font-medium"
+                        className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600 font-medium"
                         required
                       />
                     </div>
@@ -1459,7 +1487,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                         value={newEmail}
                         onChange={(e) => setNewEmail(e.target.value)}
                         placeholder="g-12345678@moe-dl.edu.my"
-                        className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                        className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600"
                       />
                     </div>
 
@@ -1472,7 +1500,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                         value={newJawatan}
                         onChange={(e) => setNewJawatan(e.target.value)}
                         placeholder="Guru Akademik"
-                        className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                        className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600"
                       />
                     </div>
 
@@ -1485,7 +1513,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                         value={newKataLaluan}
                         onChange={(e) => setNewKataLaluan(e.target.value)}
                         placeholder="delima123"
-                        className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                        className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600"
                       />
                     </div>
 
@@ -1527,14 +1555,14 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                         value={newGred}
                         onChange={(e) => setNewGred(e.target.value)}
                         placeholder="DG41 / DG44"
-                        className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                        className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600"
                       />
                     </div>
 
                     <div className="flex items-end">
                       <button
                         type="submit"
-                        className="w-full py-2 px-3 text-xs font-bold text-white bg-emerald-800 hover:bg-emerald-900 rounded-lg transition-colors cursor-pointer shadow-xs"
+                        className="w-full py-2 px-3 text-xs font-bold text-white bg-maroon-800 hover:bg-maroon-900 rounded-lg transition-colors cursor-pointer shadow-xs border-b-2 border-kuning-400"
                       >
                         Simpan Guru
                       </button>
@@ -1553,7 +1581,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                   value={searchTeacher}
                   onChange={(e) => setSearchTeacher(e.target.value)}
                   placeholder="Cari nama guru atau jawatan..."
-                  className="w-full text-xs pl-9 pr-3.5 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                  className="w-full text-xs pl-9 pr-3.5 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600"
                 />
               </div>
 
@@ -1618,14 +1646,14 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                         <tr
                           key={u.id}
                           className={`hover:bg-stone-50 transition-colors ${
-                            isCurrent ? 'bg-emerald-50/30' : ''
+                            isCurrent ? 'bg-kuning-50/50' : ''
                           }`}
                         >
                           <td className="py-3 px-4 font-bold text-stone-900">
                             <div className="flex items-center gap-2">
                               <span>{u.nama}</span>
                               {isCurrent && (
-                                <span className="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-1.5 py-0.5 rounded">
+                                <span className="text-[10px] font-bold text-maroon-950 bg-kuning-400 px-1.5 py-0.5 rounded border border-kuning-500/40">
                                   SEDANG AKTIF
                                 </span>
                               )}
@@ -1678,15 +1706,15 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
 
                           <td className="py-3 px-4">
                             {isCurrent ? (
-                              <span className="text-xs font-bold text-emerald-700 flex items-center gap-1">
-                                <CheckCircle2 className="w-3.5 h-3.5" />
+                              <span className="text-xs font-bold text-maroon-700 flex items-center gap-1">
+                                <CheckCircle2 className="w-3.5 h-3.5 text-maroon-700" />
                                 <span>Akaun Semasa</span>
                               </span>
                             ) : (
                               <button
                                 type="button"
                                 onClick={() => onSelectUser(u)}
-                                className="text-xs font-medium text-stone-600 hover:text-emerald-700 underline cursor-pointer"
+                                className="text-xs font-medium text-stone-600 hover:text-maroon-800 underline cursor-pointer"
                               >
                                 Tukar ke pengguna ini
                               </button>
@@ -1734,7 +1762,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-xs space-y-4">
             <h3 className="font-bold text-stone-900 text-base flex items-center gap-2">
-              <Database className="w-5 h-5 text-emerald-700" />
+              <Database className="w-5 h-5 text-maroon-800" />
               <span>Eksport &amp; Pemulihan Sandaran Data</span>
             </h3>
 
@@ -1748,7 +1776,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                 onClick={onExportBackup}
                 className="w-full py-2.5 px-4 text-xs font-bold text-stone-800 bg-stone-100 hover:bg-stone-200 border border-stone-300 rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-2xs"
               >
-                <Download className="w-4 h-4 text-emerald-700" />
+                <Download className="w-4 h-4 text-maroon-800" />
                 <span>Muat Turun Fail Sandaran Penuh (JSON)</span>
               </button>
 
@@ -1782,7 +1810,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
 
           <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-xs space-y-4">
             <h3 className="font-bold text-stone-900 text-base flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-emerald-700" />
+              <ShieldCheck className="w-5 h-5 text-maroon-800" />
               <span>Struktur &amp; Piawaian Pangkalan Data</span>
             </h3>
 
@@ -1792,23 +1820,23 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
 
             <div className="space-y-2 text-xs font-mono text-stone-700 bg-stone-50 p-4 rounded-xl border border-stone-200">
               <div className="flex items-center justify-between border-b border-stone-200/60 pb-1">
-                <span className="font-bold text-emerald-900">profiles</span>
+                <span className="font-bold text-maroon-950">profiles</span>
                 <span className="text-stone-500 text-[11px]">{users.length} rekod pengguna</span>
               </div>
               <div className="flex items-center justify-between border-b border-stone-200/60 pb-1">
-                <span className="font-bold text-emerald-900">tetapan</span>
+                <span className="font-bold text-maroon-950">tetapan</span>
                 <span className="text-stone-500 text-[11px]">1 rekod profil sekolah</span>
               </div>
               <div className="flex items-center justify-between border-b border-stone-200/60 pb-1">
-                <span className="font-bold text-emerald-900">jadual</span>
+                <span className="font-bold text-maroon-950">jadual</span>
                 <span className="text-stone-500 text-[11px]">{jadual.length} giliran bertugas</span>
               </div>
               <div className="flex items-center justify-between border-b border-stone-200/60 pb-1">
-                <span className="font-bold text-emerald-900">laporan_harian</span>
+                <span className="font-bold text-maroon-950">laporan_harian</span>
                 <span className="text-stone-500 text-[11px]">rekod harian guru bertugas</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="font-bold text-emerald-900">laporan_mingguan</span>
+                <span className="font-bold text-maroon-950">laporan_mingguan</span>
                 <span className="text-stone-500 text-[11px]">rumusan mingguan rasmi</span>
               </div>
             </div>
@@ -1824,7 +1852,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
           <div className="bg-white rounded-2xl border border-stone-200 shadow-2xl max-w-lg w-full p-6 space-y-4">
             <div className="flex items-center justify-between border-b border-stone-100 pb-3">
               <h3 className="font-bold text-stone-900 text-sm flex items-center gap-2">
-                <Edit2 className="w-4 h-4 text-emerald-700" />
+                <Edit2 className="w-4 h-4 text-maroon-800" />
                 <span>Sunting Maklumat Guru</span>
               </h3>
               <button
@@ -1847,7 +1875,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                   onChange={(e) =>
                     setEditingTeacher({ ...editingTeacher, nama: e.target.value })
                   }
-                  className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500 font-bold"
+                  className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600 font-bold"
                   required
                 />
               </div>
@@ -1863,7 +1891,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                     onChange={(e) =>
                       setEditingTeacher({ ...editingTeacher, jawatan: e.target.value })
                     }
-                    className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                    className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600"
                   />
                 </div>
 
@@ -1877,7 +1905,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                     onChange={(e) =>
                       setEditingTeacher({ ...editingTeacher, email: e.target.value })
                     }
-                    className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                    className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600"
                   />
                 </div>
               </div>
@@ -1935,7 +1963,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                     onChange={(e) =>
                       setEditingTeacher({ ...editingTeacher, gred: e.target.value })
                     }
-                    className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                    className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600"
                   />
                 </div>
 
@@ -1950,7 +1978,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                     onChange={(e) =>
                       setEditingTeacher({ ...editingTeacher, kata_laluan: e.target.value })
                     }
-                    className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500 font-mono"
+                    className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600 font-mono"
                   />
                 </div>
               </div>
@@ -1965,7 +1993,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 text-xs font-bold text-white bg-emerald-800 hover:bg-emerald-900 rounded-lg cursor-pointer shadow-xs"
+                  className="px-4 py-2 text-xs font-bold text-white bg-maroon-800 hover:bg-maroon-900 rounded-lg cursor-pointer shadow-xs border-b-2 border-kuning-400"
                 >
                   Simpan Kemas Kini
                 </button>

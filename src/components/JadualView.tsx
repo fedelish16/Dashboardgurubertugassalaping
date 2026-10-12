@@ -259,7 +259,7 @@ export const JadualView: React.FC<JadualViewProps> = ({
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-2">
         <div>
           <h2 className="text-xl sm:text-2xl font-bold text-stone-900 tracking-tight flex items-center gap-2">
-            <Calendar className="w-6 h-6 text-emerald-700" />
+            <Calendar className="w-6 h-6 text-maroon-800" />
             <span>Jadual Guru Bertugas Mingguan</span>
           </h2>
           <p className="text-xs sm:text-sm text-stone-600 mt-1">
@@ -272,18 +272,18 @@ export const JadualView: React.FC<JadualViewProps> = ({
             <button
               type="button"
               onClick={onNavigateToAgihan}
-              className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-white bg-emerald-800 hover:bg-emerald-900 rounded-lg transition-colors cursor-pointer shadow-xs"
+              className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-white bg-maroon-800 hover:bg-maroon-900 rounded-lg transition-colors cursor-pointer shadow-xs border-b-2 border-kuning-400"
             >
-              <Wand2 className="w-3.5 h-3.5 text-emerald-300" />
+              <Wand2 className="w-3.5 h-3.5 text-kuning-300" />
               <span>Jana Agihan Tugas</span>
             </button>
           )}
           <button
             type="button"
             onClick={() => downloadTemplate('xlsx')}
-            className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-maroon-900 bg-maroon-50 hover:bg-maroon-100 border border-maroon-200 rounded-lg transition-colors cursor-pointer"
           >
-            <Download className="w-4 h-4 text-emerald-700" />
+            <Download className="w-4 h-4 text-maroon-800" />
             <span>Templat Excel</span>
           </button>
           <button
@@ -322,7 +322,7 @@ export const JadualView: React.FC<JadualViewProps> = ({
         <div className="lg:col-span-7 bg-white p-5 rounded-xl border border-stone-200 shadow-xs space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Upload className="w-5 h-5 text-emerald-700" />
+              <Upload className="w-5 h-5 text-maroon-800" />
               <h3 className="font-bold text-stone-900 text-sm">
                 Muat Naik Jadual Bertugas (CSV / Excel)
               </h3>
@@ -340,7 +340,7 @@ export const JadualView: React.FC<JadualViewProps> = ({
             <div className="flex flex-col sm:flex-row sm:items-center gap-3">
               <label
                 htmlFor="upload-roster-input"
-                className="flex-1 border-2 border-dashed border-stone-300 hover:border-emerald-600 rounded-lg p-3 text-center cursor-pointer transition-colors bg-stone-50/50 hover:bg-emerald-50/20"
+                className="flex-1 border-2 border-dashed border-stone-300 hover:border-maroon-700 rounded-lg p-3 text-center cursor-pointer transition-colors bg-stone-50/50 hover:bg-maroon-50/30"
               >
                 <FileSpreadsheet className="w-6 h-6 text-stone-400 mx-auto mb-1" />
                 <span className="text-xs font-semibold text-stone-700 block">
@@ -364,7 +364,7 @@ export const JadualView: React.FC<JadualViewProps> = ({
                     type="checkbox"
                     checked={replaceExisting}
                     onChange={(e) => setReplaceExisting(e.target.checked)}
-                    className="rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4 cursor-pointer"
+                    className="rounded text-maroon-800 focus:ring-maroon-500 w-4 h-4 cursor-pointer"
                   />
                   <span>Gantikan semua jadual sedia ada</span>
                 </label>
@@ -375,12 +375,12 @@ export const JadualView: React.FC<JadualViewProps> = ({
               <div
                 className={`p-3 rounded-lg text-xs flex items-start gap-2 ${
                   uploadMsg.success
-                    ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+                    ? 'bg-maroon-50 text-maroon-900 border border-maroon-200'
                     : 'bg-rose-50 text-rose-800 border border-rose-200'
                 }`}
               >
                 {uploadMsg.success ? (
-                  <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-4 h-4 text-maroon-700 shrink-0 mt-0.5" />
                 ) : (
                   <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
                 )}
@@ -393,7 +393,7 @@ export const JadualView: React.FC<JadualViewProps> = ({
         {/* Box 2: Tambah Rekod Manual (5 cols) */}
         <div className="lg:col-span-5 bg-white p-5 rounded-xl border border-stone-200 shadow-xs space-y-4">
           <div className="flex items-center gap-2">
-            <Plus className="w-5 h-5 text-emerald-700" />
+            <Plus className="w-5 h-5 text-maroon-800" />
             <h3 className="font-bold text-stone-900 text-sm">
               Tambah Guru Bertugas Manual
             </h3>
@@ -408,7 +408,7 @@ export const JadualView: React.FC<JadualViewProps> = ({
                 type="date"
                 value={formDate}
                 onChange={(e) => setFormDate(e.target.value)}
-                className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600"
                 required
               />
               <span className="text-[10px] text-stone-400 mt-0.5 block">
@@ -426,7 +426,7 @@ export const JadualView: React.FC<JadualViewProps> = ({
                 value={formNama}
                 onChange={(e) => setFormNama(e.target.value)}
                 placeholder="Contoh: Cikgu Fed"
-                className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600"
                 required
               />
               <datalist id="registered-teachers">
@@ -446,7 +446,7 @@ export const JadualView: React.FC<JadualViewProps> = ({
                   value={formKumpulan}
                   onChange={(e) => setFormKumpulan(e.target.value)}
                   placeholder="Kumpulan 1"
-                  className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600"
                 />
               </div>
               <div>
@@ -458,16 +458,16 @@ export const JadualView: React.FC<JadualViewProps> = ({
                   value={formCatatan}
                   onChange={(e) => setFormCatatan(e.target.value)}
                   placeholder="Ketua / Kantin"
-                  className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600"
                 />
               </div>
             </div>
 
             <button
               type="submit"
-              className="w-full py-2 px-3 text-xs font-bold text-white bg-emerald-800 hover:bg-emerald-900 rounded-lg transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
+              className="w-full py-2 px-3 text-xs font-bold text-white bg-maroon-800 hover:bg-maroon-900 rounded-lg transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-xs border-b-2 border-kuning-400"
             >
-              <Plus className="w-4 h-4" />
+              <Plus className="w-4 h-4 text-kuning-300" />
               <span>Simpan ke Jadual</span>
             </button>
           </form>
@@ -491,7 +491,7 @@ export const JadualView: React.FC<JadualViewProps> = ({
                 aria-label="Tapis mengikut minggu persekolahan"
                 value={selectedWeekFilter}
                 onChange={(e) => setSelectedWeekFilter(e.target.value)}
-                className="text-xs px-3 py-1.5 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500 text-stone-700"
+                className="text-xs px-3 py-1.5 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600 text-stone-700"
               >
                 <option value="all">Semua Minggu</option>
                 {uniqueWeeks.map((wm) => (
@@ -508,7 +508,7 @@ export const JadualView: React.FC<JadualViewProps> = ({
                 aria-label="Tapis mengikut sidang"
                 value={selectedSidangFilter}
                 onChange={(e) => setSelectedSidangFilter(e.target.value)}
-                className="text-xs px-3 py-1.5 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500 text-stone-700"
+                className="text-xs px-3 py-1.5 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600 text-stone-700"
               >
                 <option value="all">Semua Sidang</option>
                 <option value="pagi">Sidang Pagi Sahaja</option>
@@ -524,7 +524,7 @@ export const JadualView: React.FC<JadualViewProps> = ({
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Cari nama guru / catatan..."
-                className="w-full text-xs pl-8 pr-3 py-1.5 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full text-xs pl-8 pr-3 py-1.5 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600"
               />
             </div>
           </div>
@@ -558,14 +558,14 @@ export const JadualView: React.FC<JadualViewProps> = ({
                     <tr
                       key={item.id}
                       className={`hover:bg-stone-50 transition-colors ${
-                        isThisWeek ? 'bg-emerald-50/30' : ''
+                        isThisWeek ? 'bg-kuning-50/50' : ''
                       }`}
                     >
                       <td className="py-3 px-4 whitespace-nowrap">
                         <div className="font-semibold text-stone-900 flex items-center gap-1.5">
                           <span>{formatMalayWeekRange(monIso)}</span>
                           {isThisWeek && (
-                            <span className="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-1.5 py-0.5 rounded">
+                            <span className="text-[10px] font-bold text-maroon-950 bg-kuning-400 px-1.5 py-0.5 rounded border border-kuning-500/40">
                               MINGGU INI
                             </span>
                           )}

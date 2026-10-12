@@ -346,8 +346,8 @@ export default function App() {
 
       {/* Floating Toast Notification */}
       {toastMessage && (
-        <div className="toast-container fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-full bg-stone-900 text-white text-xs font-semibold shadow-xl flex items-center gap-2 border border-stone-700 animate-fade-in max-w-[90vw]">
-          <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+        <div className="toast-container fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-full bg-maroon-950 text-white text-xs font-semibold shadow-xl flex items-center gap-2 border border-kuning-400/40 animate-fade-in max-w-[90vw]">
+          <CheckCircle2 className="w-4 h-4 text-kuning-400 shrink-0" />
           <span className="truncate">{toastMessage}</span>
         </div>
       )}

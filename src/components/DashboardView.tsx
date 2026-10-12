@@ -93,22 +93,22 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
   return (
     <div className="space-y-6">
       {/* Welcome Banner */}
-      <div className="bg-gradient-to-r from-emerald-900 via-teal-900 to-stone-900 rounded-2xl p-6 text-white shadow-md relative overflow-hidden">
-        <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-radial from-emerald-500/10 to-transparent pointer-events-none" />
+      <div className="bg-gradient-to-r from-maroon-950 via-maroon-900 to-maroon-800 rounded-2xl p-6 text-white shadow-md relative overflow-hidden border border-maroon-700/50">
+        <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-radial from-kuning-400/10 to-transparent pointer-events-none" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div className="flex items-start gap-4">
             <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-white/10 rounded-2xl p-2 border border-white/20 backdrop-blur-xs flex items-center justify-center shadow-md">
               <SmkSalapingLogo className="w-full h-full" alt="Lencana Rasmi SMK Salaping" logoUrl={tetapan.logo_url} />
             </div>
             <div>
-              <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-800/80 border border-emerald-600/40 text-emerald-200 text-xs font-medium mb-2">
-                <Calendar className="w-3.5 h-3.5" />
+              <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-maroon-800/80 border border-kuning-400/40 text-kuning-300 text-xs font-bold mb-2">
+                <Calendar className="w-3.5 h-3.5 text-kuning-400" />
                 <span>{formatMalayDate(today)} &bull; Minggu Persekolahan ({formatMalayWeekRange(thisMonday)})</span>
               </div>
               <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
                 Selamat Datang, {currentUser.nama}
               </h2>
-              <p className="text-xs sm:text-sm text-stone-300 mt-1 max-w-2xl leading-relaxed">
+              <p className="text-xs sm:text-sm text-stone-200 mt-1 max-w-2xl leading-relaxed">
                 {currentUser.peranan === 'pentadbir'
                   ? 'Portal Pengurusan & Pengesahan Buku Laporan Guru Bertugas SMK Salaping, Kota Marudu. Semak kehadiran harian, pantau disiplin, dan sahkan laporan bertugas.'
                   : 'Sila lengkapkan laporan harian guru bertugas untuk pemantauan kehadiran murid, disiplin perhimpunan, waktu rehat dan keselamatan persekitaran sekolah.'}
@@ -122,23 +122,23 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                 onSelectDate(today);
                 setTab('harian');
               }}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-bold text-sm shadow-sm transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-kuning-400 hover:bg-kuning-300 text-maroon-950 font-black text-sm shadow-sm transition-all cursor-pointer"
             >
-              <FileText className="w-4 h-4" />
+              <FileText className="w-4 h-4 text-maroon-950" />
               <span>{todayReport ? 'Kemaskini Laporan Hari Ini' : 'Isi Laporan Hari Ini'}</span>
             </button>
             <button
               onClick={() => setTab('mingguan')}
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 transition-all cursor-pointer"
             >
-              <ShieldCheck className="w-4 h-4" />
+              <ShieldCheck className="w-4 h-4 text-kuning-300" />
               <span>Laporan Mingguan</span>
             </button>
             <button
               onClick={() => setTab('agihan')}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-800/80 hover:bg-emerald-700/80 text-emerald-100 font-semibold text-sm border border-emerald-500/40 transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-maroon-950/70 hover:bg-maroon-950 text-white font-semibold text-sm border border-kuning-400/40 transition-all cursor-pointer"
             >
-              <Wand2 className="w-4 h-4 text-emerald-300" />
+              <Wand2 className="w-4 h-4 text-kuning-400" />
               <span>Jana Agihan Tugas</span>
             </button>
           </div>
@@ -152,7 +152,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           <div>
             <div className="flex items-center justify-between text-stone-500 mb-2">
               <span className="text-xs font-semibold uppercase tracking-wider">Status Hari Ini</span>
-              <FileText className="w-4 h-4 text-emerald-700" />
+              <FileText className="w-4 h-4 text-maroon-700" />
             </div>
             <div className="flex items-baseline gap-2">
               <span className="text-xl font-bold text-stone-900">
@@ -171,7 +171,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                 onSelectDate(today);
                 setTab('harian');
               }}
-              className="text-xs font-semibold text-emerald-700 hover:text-emerald-800 flex items-center gap-1 cursor-pointer"
+              className="text-xs font-semibold text-maroon-700 hover:text-maroon-800 flex items-center gap-1 cursor-pointer"
             >
               <span>{todayReport ? 'Buka borang laporan' : 'Mulakan laporan'}</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -184,7 +184,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           <div>
             <div className="flex items-center justify-between text-stone-500 mb-2">
               <span className="text-xs font-semibold uppercase tracking-wider">Kehadiran Murid</span>
-              <TrendingUp className="w-4 h-4 text-emerald-700" />
+              <TrendingUp className="w-4 h-4 text-maroon-700" />
             </div>
             <div className="flex items-baseline gap-2">
               <span className="text-2xl font-bold text-stone-900">
@@ -205,7 +205,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           <div className="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between">
             <span className="text-xs text-stone-400">Sasaran KPM: &ge; 95%</span>
             {todayPct && Number(todayPct) >= 95 ? (
-              <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+              <span className="text-[11px] font-bold text-maroon-700 bg-maroon-50 border border-maroon-200 px-2 py-0.5 rounded">
                 Capai Sasaran
               </span>
             ) : null}
@@ -217,7 +217,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           <div>
             <div className="flex items-center justify-between text-stone-500 mb-2">
               <span className="text-xs font-semibold uppercase tracking-wider">Guru Bertugas</span>
-              <Users className="w-4 h-4 text-emerald-700" />
+              <Users className="w-4 h-4 text-maroon-700" />
             </div>
             <div className="flex items-baseline gap-2">
               <span className="text-2xl font-bold text-stone-900">
@@ -233,7 +233,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           <div className="mt-4 pt-3 border-t border-stone-100">
             <button
               onClick={() => setTab('jadual')}
-              className="text-xs font-semibold text-emerald-700 hover:text-emerald-800 flex items-center gap-1 cursor-pointer"
+              className="text-xs font-semibold text-maroon-700 hover:text-maroon-800 flex items-center gap-1 cursor-pointer"
             >
               <span>Urus jadual bertugas</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -270,7 +270,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             ) : (
-              <span className="text-xs text-emerald-700 font-medium">Semua laporan telah disahkan</span>
+              <span className="text-xs text-maroon-700 font-medium">Semua laporan telah disahkan</span>
             )}
           </div>
         </div>
@@ -284,7 +284,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           <div className="bg-white rounded-xl border border-stone-200 p-5 shadow-xs">
             <div className="flex items-center justify-between pb-3 border-b border-stone-100">
               <div className="flex items-center gap-2">
-                <UserCheck className="w-5 h-5 text-emerald-700" />
+                <UserCheck className="w-5 h-5 text-maroon-700" />
                 <h3 className="font-bold text-stone-900 text-base">
                   Senarai Guru Bertugas Minggu Ini
                 </h3>
@@ -302,9 +302,9 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                 <div className="mt-3 flex items-center justify-center gap-2">
                   <button
                     onClick={() => setTab('agihan')}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-white bg-emerald-800 rounded-lg hover:bg-emerald-900 cursor-pointer shadow-xs"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-white bg-maroon-850 hover:bg-maroon-900 rounded-lg cursor-pointer shadow-xs border border-maroon-700"
                   >
-                    <Wand2 className="w-3.5 h-3.5 text-emerald-300" />
+                    <Wand2 className="w-3.5 h-3.5 text-kuning-400" />
                     <span>Jana Agihan Tugas KPM</span>
                   </button>
                   <button
@@ -322,7 +322,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                     key={g.id || idx}
                     className="p-3 rounded-lg border border-stone-100 bg-stone-50/60 flex items-start gap-3"
                   >
-                    <div className="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-maroon-100 text-maroon-900 border border-maroon-200 font-bold text-xs flex items-center justify-center shrink-0">
                       {idx + 1}
                     </div>
                     <div className="min-w-0">
@@ -346,7 +346,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                         {g.catatan || 'Guru Bertugas Mingguan'}
                       </p>
                       {g.kumpulan && (
-                        <span className="inline-block mt-1 text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">
+                        <span className="inline-block mt-1 text-[10px] font-semibold text-maroon-800 bg-maroon-50 px-2 py-0.5 rounded border border-maroon-200">
                           {g.kumpulan}
                         </span>
                       )}
@@ -361,14 +361,14 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           <div className="bg-white rounded-xl border border-stone-200 p-5 shadow-xs">
             <div className="flex items-center justify-between pb-3 border-b border-stone-100">
               <div className="flex items-center gap-2">
-                <Calendar className="w-5 h-5 text-emerald-700" />
+                <Calendar className="w-5 h-5 text-maroon-700" />
                 <h3 className="font-bold text-stone-900 text-base">
                   Rekod 5 Hari Persekolahan Minggu Ini
                 </h3>
               </div>
               <button
                 onClick={() => setTab('mingguan')}
-                className="text-xs font-semibold text-emerald-700 hover:text-emerald-800 cursor-pointer"
+                className="text-xs font-semibold text-maroon-700 hover:text-maroon-800 cursor-pointer"
               >
                 Lihat Rumusan Lengkap &rarr;
               </button>
@@ -401,14 +401,14 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                       <tr
                         key={dateStr}
                         className={`hover:bg-stone-50/70 transition-colors ${
-                          isToday ? 'bg-emerald-50/40 font-medium' : ''
+                          isToday ? 'bg-kuning-50/60 font-medium' : ''
                         }`}
                       >
                         <td className="py-2.5">
                           <div className="font-semibold text-stone-900 flex items-center gap-1.5">
                             <span>{hari}</span>
                             {isToday && (
-                              <span className="text-[10px] bg-emerald-600 text-white font-bold px-1.5 py-0.2 rounded">
+                              <span className="text-[10px] bg-kuning-400 text-maroon-950 font-bold px-1.5 py-0.2 rounded border border-kuning-500/40">
                                 HARI INI
                               </span>
                             )}
@@ -420,9 +420,9 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                             <span
                               className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold ${
                                 rep.status === 'Disahkan'
-                                  ? 'bg-emerald-100 text-emerald-800'
+                                  ? 'bg-maroon-100 text-maroon-900 border border-maroon-200'
                                   : rep.status === 'Dihantar'
-                                  ? 'bg-amber-100 text-amber-800'
+                                  ? 'bg-kuning-100 text-kuning-900 border border-kuning-300'
                                   : 'bg-stone-200 text-stone-700'
                               }`}
                             >
@@ -450,7 +450,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                               onSelectDate(dateStr);
                               setTab('harian');
                             }}
-                            className="text-xs font-semibold px-2.5 py-1 rounded bg-stone-100 hover:bg-emerald-700 hover:text-white text-stone-700 transition-colors cursor-pointer"
+                            className="text-xs font-semibold px-2.5 py-1 rounded bg-stone-100 hover:bg-maroon-800 hover:text-white text-stone-700 transition-colors cursor-pointer"
                           >
                             {rep ? 'Buka' : 'Isi'}
                           </button>
@@ -475,7 +475,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
             {recentIssues.length === 0 ? (
               <div className="p-4 rounded-lg bg-stone-50 border border-stone-100 text-center">
-                <CheckCircle2 className="w-6 h-6 text-emerald-600 mx-auto mb-1" />
+                <CheckCircle2 className="w-6 h-6 text-maroon-700 mx-auto mb-1" />
                 <p className="text-xs font-semibold text-stone-700">Semua Terkawal</p>
                 <p className="text-[11px] text-stone-500 mt-0.5">
                   Tiada rekod insiden berbangkit atau isu keselamatan kritikal dilaporkan minggu ini.

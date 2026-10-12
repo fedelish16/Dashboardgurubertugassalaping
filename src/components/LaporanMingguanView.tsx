@@ -308,7 +308,7 @@ export const LaporanMingguanView: React.FC<LaporanMingguanViewProps> = ({
               aria-label="Pilih Tarikh Isnin Minggu"
               value={selectedWeekMonday}
               onChange={(e) => onSelectWeekMonday(getMonday(e.target.value))}
-              className="text-xs sm:text-sm font-bold text-stone-800 bg-white border border-stone-200 rounded px-2.5 py-1 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="text-xs sm:text-sm font-bold text-stone-800 bg-white border border-stone-200 rounded px-2.5 py-1 focus:outline-none focus:ring-1 focus:ring-maroon-600"
             />
             <button
               type="button"
@@ -346,7 +346,7 @@ export const LaporanMingguanView: React.FC<LaporanMingguanViewProps> = ({
             className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-stone-700 bg-white hover:bg-stone-50 border border-stone-200 rounded-lg shadow-2xs transition-colors cursor-pointer"
             title="Salin untuk WhatsApp / Telegram"
           >
-            <Share2 className="w-3.5 h-3.5 text-emerald-700" />
+            <Share2 className="w-3.5 h-3.5 text-maroon-800" />
             <span>Salin Ringkasan</span>
           </button>
 
@@ -363,10 +363,10 @@ export const LaporanMingguanView: React.FC<LaporanMingguanViewProps> = ({
           <button
             type="button"
             onClick={() => window.print()}
-            className="inline-flex items-center gap-1.5 px-4 py-1.5 text-xs font-bold text-white bg-emerald-800 hover:bg-emerald-900 rounded-lg shadow-xs transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 text-xs font-bold text-white bg-maroon-800 hover:bg-maroon-900 rounded-lg shadow-xs transition-colors cursor-pointer border-b-2 border-kuning-400"
             title="Cetak Laporan Lengkap Rasmi atau Simpan PDF"
           >
-            <Printer className="w-3.5 h-3.5" />
+            <Printer className="w-3.5 h-3.5 text-kuning-300" />
             <span>Cetak / Eksport PDF</span>
           </button>
         </div>
@@ -375,7 +375,7 @@ export const LaporanMingguanView: React.FC<LaporanMingguanViewProps> = ({
       {/* Editable Reflections Box (No Print) */}
       <div className="no-print bg-white p-5 rounded-xl border border-stone-200 shadow-xs space-y-4">
         <h3 className="font-bold text-stone-900 text-sm flex items-center gap-2">
-          <FileCheck2 className="w-4 h-4 text-emerald-700" />
+          <FileCheck2 className="w-4 h-4 text-maroon-800" />
           <span>Rumusan &amp; Pengesahan Mingguan</span>
         </h3>
 
@@ -389,7 +389,7 @@ export const LaporanMingguanView: React.FC<LaporanMingguanViewProps> = ({
               onChange={(e) => setUlasan(e.target.value)}
               rows={4}
               placeholder="Tulis ulasan keseluruhan bagi minggu ini..."
-              className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600"
             />
           </div>
 
@@ -407,7 +407,7 @@ export const LaporanMingguanView: React.FC<LaporanMingguanViewProps> = ({
                   ? 'Catatan arahan atau ulasan pentadbir untuk makluman mesyuarat pengurusan...'
                   : 'Catatan pentadbir sekolah.'
               }
-              className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500 disabled:bg-stone-100 disabled:text-stone-400"
+              className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600 disabled:bg-stone-100 disabled:text-stone-400"
             />
           </div>
         </div>
@@ -426,14 +426,14 @@ export const LaporanMingguanView: React.FC<LaporanMingguanViewProps> = ({
             <button
               type="button"
               onClick={() => handleSave('Disahkan')}
-              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-emerald-800 hover:bg-emerald-900 rounded-lg transition-colors cursor-pointer shadow-xs"
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-maroon-800 hover:bg-maroon-900 rounded-lg transition-colors cursor-pointer shadow-xs border-b-2 border-kuning-400"
             >
-              <CheckCircle2 className="w-3.5 h-3.5" />
+              <CheckCircle2 className="w-3.5 h-3.5 text-kuning-300" />
               <span>Sahkan &amp; Tandatangan Laporan Mingguan</span>
             </button>
           ) : (
             <span className="text-xs text-stone-500 italic">
-              Pengesahan mingguan dibuat oleh Guru Besar / PK HEM.
+              Pengesahan mingguan dibuat oleh Pengetua / PK HEM.
             </span>
           )}
         </div>
