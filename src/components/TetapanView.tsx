@@ -414,6 +414,8 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
   const [newPeranan, setNewPeranan] = useState<'guru' | 'pentadbir'>('guru');
   const [newSidang, setNewSidang] = useState<Sidang>('pagi');
   const [newTelefon, setNewTelefon] = useState('');
+  const [newKataLaluan, setNewKataLaluan] = useState('delima123');
+  const [newGred, setNewGred] = useState('DG41');
 
   // Edit Teacher Modal
   const [editingTeacher, setEditingTeacher] = useState<UserProfile | null>(null);
@@ -425,14 +427,20 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
       return;
     }
 
+    const cleanEmail =
+      newEmail.trim() ||
+      `g-${newNama.toLowerCase().replace(/[^a-z0-9]/g, '')}@moe-dl.edu.my`;
+
     const newU: UserProfile = {
       id: 'u-' + Date.now(),
       nama: newNama.trim(),
-      email: newEmail.trim() || `${newNama.toLowerCase().replace(/\s+/g, '.')}@moe.edu.my`,
+      email: cleanEmail,
       jawatan: newJawatan.trim() || 'Guru Akademik',
       peranan: newPeranan,
       sidang: newSidang,
-      telefon: newTelefon.trim() || undefined
+      gred: newGred.trim() || 'DG41',
+      telefon: newTelefon.trim() || undefined,
+      kata_laluan: newKataLaluan.trim() || 'delima123'
     };
 
     onSaveUsers([...users, newU]);
@@ -440,6 +448,8 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
     setNewEmail('');
     setNewJawatan('Guru Akademik');
     setNewTelefon('');
+    setNewKataLaluan('delima123');
+    setNewGred('DG41');
     setShowAddTeacher(false);
     onToast(`Akaun untuk ${newU.nama} berjaya didaftarkan!`);
   };
@@ -522,13 +532,16 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
           if (strP.includes('pentadbir') || strP.includes('admin') || strP.includes('pengetua')) pVal = 'pentadbir';
         }
 
+        const cleanSlug = nVal.toLowerCase().replace(/[^a-z0-9]/g, '');
         newTeachers.push({
           id: 'u-' + Date.now() + '-' + i,
           nama: nVal,
-          email: `${nVal.toLowerCase().replace(/\s+/g, '.')}@moe.edu.my`,
+          email: `g-${cleanSlug || 'guru' + i}@moe-dl.edu.my`,
           jawatan: jVal,
           peranan: pVal,
-          sidang: sVal
+          sidang: sVal,
+          gred: 'DG41',
+          kata_laluan: pVal === 'pentadbir' ? 'admin123' : 'delima123'
         });
       });
 
@@ -574,7 +587,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
         'Peranan': 'Guru'
       },
       {
-        'Nama Guru': 'En. Azman bin Kassim',
+        'Nama Guru': 'Tuan Sanaleh bin Daud',
         'Sidang': 'Kedua-dua',
         'Jawatan': 'Pengetua',
         'Peranan': 'Pentadbir'
@@ -814,7 +827,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                   type="text"
                   value={pentadbir}
                   onChange={(e) => setPentadbir(e.target.value)}
-                  placeholder="En. Azman bin Kassim"
+                  placeholder="Tuan Sanaleh bin Daud"
                   className="w-full text-xs sm:text-sm px-3.5 py-2.5 border border-stone-300 rounded-xl bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 font-semibold"
                   required
                 />
@@ -1422,8 +1435,8 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                     </button>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3">
-                    <div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                    <div className="lg:col-span-2">
                       <label className="block text-[11px] font-bold text-stone-700 mb-1">
                         Nama Penuh <span className="text-rose-500">*</span>
                       </label>
@@ -1437,9 +1450,22 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                       />
                     </div>
 
+                    <div className="lg:col-span-2">
+                      <label className="block text-[11px] font-bold text-stone-700 mb-1">
+                        Emel Rasmi DELIMa (KPM)
+                      </label>
+                      <input
+                        type="email"
+                        value={newEmail}
+                        onChange={(e) => setNewEmail(e.target.value)}
+                        placeholder="g-12345678@moe-dl.edu.my"
+                        className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                      />
+                    </div>
+
                     <div>
                       <label className="block text-[11px] font-bold text-stone-700 mb-1">
-                        Jawatan / Tugas
+                        Jawatan / Skop
                       </label>
                       <input
                         type="text"
@@ -1452,7 +1478,20 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
 
                     <div>
                       <label className="block text-[11px] font-bold text-stone-700 mb-1">
-                        Sidang Persekolahan
+                        Kata Laluan
+                      </label>
+                      <input
+                        type="text"
+                        value={newKataLaluan}
+                        onChange={(e) => setNewKataLaluan(e.target.value)}
+                        placeholder="delima123"
+                        className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] font-bold text-stone-700 mb-1">
+                        Sidang
                       </label>
                       <select
                         value={newSidang}
@@ -1477,6 +1516,19 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                         <option value="guru">Guru (Isi Laporan)</option>
                         <option value="pentadbir">Pentadbir (Pengesah)</option>
                       </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] font-bold text-stone-700 mb-1">
+                        Gred Jawatan
+                      </label>
+                      <input
+                        type="text"
+                        value={newGred}
+                        onChange={(e) => setNewGred(e.target.value)}
+                        placeholder="DG41 / DG44"
+                        className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                      />
                     </div>
 
                     <div className="flex items-end">
@@ -1868,6 +1920,38 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                     <option value="guru">Guru (Isi Laporan Harian)</option>
                     <option value="pentadbir">Pentadbir (Sahkan Laporan)</option>
                   </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-stone-700 mb-1">
+                    Gred Jawatan
+                  </label>
+                  <input
+                    type="text"
+                    value={editingTeacher.gred || ''}
+                    placeholder="DG41 / DG44"
+                    onChange={(e) =>
+                      setEditingTeacher({ ...editingTeacher, gred: e.target.value })
+                    }
+                    className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-stone-700 mb-1">
+                    Kata Laluan Log Masuk
+                  </label>
+                  <input
+                    type="text"
+                    value={editingTeacher.kata_laluan || ''}
+                    placeholder="Masukkan kata laluan"
+                    onChange={(e) =>
+                      setEditingTeacher({ ...editingTeacher, kata_laluan: e.target.value })
+                    }
+                    className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500 font-mono"
+                  />
                 </div>
               </div>
 

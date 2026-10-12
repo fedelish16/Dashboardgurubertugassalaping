@@ -638,7 +638,7 @@ export const LaporanMingguanView: React.FC<LaporanMingguanViewProps> = ({
               </div>
               <div className="border-t border-stone-800 pt-1.5">
                 <p className="font-bold text-stone-900">
-                  {tetapan.pentadbir || 'En. Azman bin Kassim'}
+                  {tetapan.pentadbir || 'Tuan Sanaleh bin Daud'}
                 </p>
                 <p className="text-stone-500">{tetapan.jawatan || 'Pengetua'}</p>
                 <p className="text-stone-400 text-[10px]">Tarikh: {formatMalayDate(addDays(selectedWeekMonday, 4))}</p>

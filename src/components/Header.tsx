@@ -10,7 +10,10 @@ import {
   ShieldAlert,
   ChevronDown,
   Printer,
-  Wand2
+  Wand2,
+  LogIn,
+  LogOut,
+  UserPlus
 } from 'lucide-react';
 import { TabAktif, UserProfile, TetapanSekolah } from '../types';
 import { SmkSalapingLogo } from './SmkSalapingLogo';
@@ -23,6 +26,8 @@ interface HeaderProps {
   users: UserProfile[];
   onSelectUser: (user: UserProfile) => void;
   onQuickPrint?: () => void;
+  onOpenAuth?: () => void;
+  onLogout?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -32,7 +37,9 @@ export const Header: React.FC<HeaderProps> = ({
   currentUser,
   users,
   onSelectUser,
-  onQuickPrint
+  onQuickPrint,
+  onOpenAuth,
+  onLogout
 }) => {
   const isAdmin = currentUser.peranan === 'pentadbir';
 
@@ -84,7 +91,7 @@ export const Header: React.FC<HeaderProps> = ({
                   <span className="text-stone-400 block text-[10px] uppercase font-bold tracking-wider">
                     {isAdmin ? 'Akses Pentadbir' : 'Akses Guru'}
                   </span>
-                  <span className="font-semibold text-stone-800 line-clamp-1 max-w-[150px] sm:max-w-[200px]">
+                  <span className="font-semibold text-stone-800 line-clamp-1 max-w-[120px] sm:max-w-[170px]">
                     {currentUser.nama}
                   </span>
                 </div>
@@ -120,6 +127,32 @@ export const Header: React.FC<HeaderProps> = ({
                 </select>
               </div>
             </div>
+
+            {/* Log Masuk / Tukar Akaun DELIMA Button */}
+            {onOpenAuth && (
+              <button
+                type="button"
+                onClick={onOpenAuth}
+                className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg transition-colors cursor-pointer shadow-2xs"
+                title="Buka Portal Log Masuk & Daftar Guru DELIMa"
+              >
+                <LogIn className="w-3.5 h-3.5 text-emerald-700" />
+                <span className="hidden sm:inline">Akses DELIMa</span>
+              </button>
+            )}
+
+            {/* Log Keluar Button */}
+            {onLogout && (
+              <button
+                type="button"
+                onClick={onLogout}
+                className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 text-xs font-semibold text-rose-700 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-lg transition-colors cursor-pointer"
+                title="Log Keluar daripada Sistem"
+              >
+                <LogOut className="w-3.5 h-3.5 text-rose-600" />
+                <span className="hidden sm:inline">Log Keluar</span>
+              </button>
+            )}
           </div>
         </div>
 

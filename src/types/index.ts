@@ -4,12 +4,14 @@ export type Sidang = 'pagi' | 'petang' | 'kedua';
 export interface UserProfile {
   id: string;
   nama: string;
-  email: string;
+  email: string; // Emel DELIMa e.g. g-12345678@moe-dl.edu.my
   peranan: Peranan;
   jawatan: string; // e.g. 'Ketua Guru Bertugas', 'Guru Akademik', 'Pengetua', 'PK HEM'
   sidang?: Sidang; // 'pagi' | 'petang' | 'kedua'
   gred?: string;
   telefon?: string;
+  kata_laluan?: string; // Kata laluan log masuk
+  delima_id?: string;
 }
 
 export interface TetapanSekolah {

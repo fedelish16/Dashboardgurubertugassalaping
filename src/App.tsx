@@ -24,6 +24,7 @@ import {
   saveStoredLaporanMingguan,
   getActiveUser,
   saveActiveUser,
+  logoutUser,
   resetAllToDefault,
   exportBackupJSON,
   importBackupJSON
@@ -35,6 +36,7 @@ import { AgihanTugasView } from './components/AgihanTugasView';
 import { LaporanHarianView } from './components/LaporanHarianView';
 import { LaporanMingguanView } from './components/LaporanMingguanView';
 import { TetapanView } from './components/TetapanView';
+import { AuthModal } from './components/AuthModal';
 import { CheckCircle2, AlertCircle } from 'lucide-react';
 
 export default function App() {
@@ -52,6 +54,9 @@ export default function App() {
   const [jadual, setJadual] = useState<JadualBertugas[]>([]);
   const [laporanHarian, setLaporanHarian] = useState<Record<string, LaporanHarian>>({});
   const [laporanMingguan, setLaporanMingguan] = useState<Record<string, LaporanMingguan>>({});
+
+  // Auth modal state
+  const [showAuthModal, setShowAuthModal] = useState<boolean>(false);
 
   // Toast notification
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -91,6 +96,28 @@ export default function App() {
     setCurrentUser(u);
     saveActiveUser(u);
     showToast(`Beralih ke akaun: ${u.nama} (${u.jawatan})`);
+  };
+
+  const handleLoginSuccess = (u: UserProfile) => {
+    setCurrentUser(u);
+    saveActiveUser(u);
+    setShowAuthModal(false);
+  };
+
+  const handleRegisterUser = (newUser: UserProfile) => {
+    const updated = [...users, newUser];
+    setUsers(updated);
+    saveStoredUsers(updated);
+    setCurrentUser(newUser);
+    saveActiveUser(newUser);
+    setShowAuthModal(false);
+  };
+
+  const handleLogout = () => {
+    logoutUser();
+    setCurrentUser(null);
+    setShowAuthModal(true);
+    showToast('Anda telah log keluar daripada sistem.');
   };
 
   const handleSaveUsers = (updated: UserProfile[]) => {
@@ -176,10 +203,27 @@ export default function App() {
     }
   };
 
-  if (!currentUser || !tetapan) {
+  if (!tetapan) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-stone-100 text-stone-600">
         <p className="text-sm font-semibold">Memuatkan Sistem Guru Bertugas...</p>
+      </div>
+    );
+  }
+
+  // If user is not logged in, show mandatory login screen
+  if (!currentUser) {
+    return (
+      <div className="min-h-screen bg-stone-900 flex items-center justify-center p-4">
+        <AuthModal
+          isOpen={true}
+          isMandatory={true}
+          users={users}
+          tetapan={tetapan}
+          onLoginSuccess={handleLoginSuccess}
+          onRegisterUser={handleRegisterUser}
+          onToast={showToast}
+        />
       </div>
     );
   }
@@ -197,6 +241,8 @@ export default function App() {
         users={users}
         onSelectUser={handleSelectUser}
         onQuickPrint={() => window.print()}
+        onOpenAuth={() => setShowAuthModal(true)}
+        onLogout={handleLogout}
       />
 
       {/* Main Container */}
@@ -304,6 +350,20 @@ export default function App() {
           <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
           <span className="truncate">{toastMessage}</span>
         </div>
+      )}
+
+      {/* Auth Modal for Log In / Sign Up */}
+      {showAuthModal && (
+        <AuthModal
+          isOpen={showAuthModal}
+          onClose={() => setShowAuthModal(false)}
+          users={users}
+          tetapan={tetapan}
+          onLoginSuccess={handleLoginSuccess}
+          onRegisterUser={handleRegisterUser}
+          onToast={showToast}
+          isMandatory={false}
+        />
       )}
     </div>
   );

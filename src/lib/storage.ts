@@ -44,24 +44,50 @@ export const DEFAULT_USERS: UserProfile[] = [
   {
     id: 'u-1',
     nama: 'Cikgu Fed',
-    email: 'fed@moe.edu.my',
+    email: 'g-fed@moe-dl.edu.my',
     peranan: 'guru',
     jawatan: 'Ketua Guru Bertugas',
-    sidang: 'pagi'
+    sidang: 'pagi',
+    gred: 'DG44',
+    kata_laluan: 'delima123'
   },
   {
     id: 'u-admin-1',
-    nama: 'En. Azman bin Kassim',
-    email: 'azman.kassim@moe.edu.my',
+    nama: 'Tuan Sanaleh bin Daud',
+    email: 'g-sanaleh@moe-dl.edu.my',
     peranan: 'pentadbir',
-    jawatan: 'Pengetua'
+    jawatan: 'Pengetua',
+    gred: 'DG52',
+    kata_laluan: 'admin123'
   },
   {
     id: 'u-admin-2',
-    nama: 'Pn. Rohana binti Salleh',
-    email: 'rohana.salleh@moe.edu.my',
+    nama: 'En. Arman bin Aliamat',
+    email: 'g-arman@moe-dl.edu.my',
     peranan: 'pentadbir',
-    jawatan: 'Penolong Kanan Hal Ehwal Murid (PK HEM)'
+    jawatan: 'Penolong Kanan Hal Ehwal Murid (PK HEM)',
+    gred: 'DG48',
+    kata_laluan: 'admin123'
+  },
+  {
+    id: 'u-2',
+    nama: 'Ustaz Hafiz bin Ismail',
+    email: 'g-hafiz@moe-dl.edu.my',
+    peranan: 'guru',
+    jawatan: 'Guru Pendidikan Islam',
+    sidang: 'pagi',
+    gred: 'DG41',
+    kata_laluan: 'delima123'
+  },
+  {
+    id: 'u-3',
+    nama: 'Cikgu Dayang Nuraisyah',
+    email: 'g-nuraisyah@moe-dl.edu.my',
+    peranan: 'guru',
+    jawatan: 'Guru Bahasa Melayu',
+    sidang: 'petang',
+    gred: 'DG41',
+    kata_laluan: 'delima123'
   }
 ];
 
@@ -70,7 +96,7 @@ export const DEFAULT_TETAPAN: TetapanSekolah = {
   sekolah: 'SMK Salaping, Kota Marudu',
   kod_sekolah: 'XEA5101',
   alamat: 'Peti Surat 248, 89108 Kota Marudu, Sabah',
-  pentadbir: 'En. Azman bin Kassim',
+  pentadbir: 'Tuan Sanaleh bin Daud',
   jawatan: 'Pengetua',
   sesi: '2026/2027',
   moto: 'Ilmuan Gemilang'
@@ -108,11 +134,38 @@ export function getStoredUsers(): UserProfile[] {
       // Migrate any previous names if present
       let changed = false;
       const updated = users.map((u) => {
-        if (/nurul\s*huda/i.test(u.nama)) {
-          changed = true;
-          return { ...u, nama: 'Cikgu Fed', email: 'fed@moe.edu.my' };
+        let modified = false;
+        let newU = { ...u };
+        if (/nurul\s*huda/i.test(newU.nama)) {
+          newU = { ...newU, nama: 'Cikgu Fed', email: 'g-fed@moe-dl.edu.my' };
+          modified = true;
         }
-        return u;
+        if (/azman/i.test(newU.nama) || newU.id === 'u-admin-1') {
+          newU = { ...newU, nama: 'Tuan Sanaleh bin Daud', email: 'g-sanaleh@moe-dl.edu.my', jawatan: 'Pengetua' };
+          modified = true;
+        }
+        if (/rohana/i.test(newU.nama) || newU.id === 'u-admin-2') {
+          newU = { ...newU, nama: 'En. Arman bin Aliamat', email: 'g-arman@moe-dl.edu.my', jawatan: 'Penolong Kanan Hal Ehwal Murid (PK HEM)' };
+          modified = true;
+        }
+        if (!newU.kata_laluan) {
+          newU.kata_laluan = newU.peranan === 'pentadbir' ? 'admin123' : 'delima123';
+          modified = true;
+        }
+        if (newU.email === 'fed@moe.edu.my') {
+          newU.email = 'g-fed@moe-dl.edu.my';
+          modified = true;
+        }
+        if (newU.email === 'azman.kassim@moe.edu.my' || newU.email === 'g-azman@moe-dl.edu.my') {
+          newU.email = 'g-sanaleh@moe-dl.edu.my';
+          modified = true;
+        }
+        if (newU.email === 'rohana.salleh@moe.edu.my' || newU.email === 'g-rohana@moe-dl.edu.my') {
+          newU.email = 'g-arman@moe-dl.edu.my';
+          modified = true;
+        }
+        if (modified) changed = true;
+        return newU;
       });
       if (changed) saveStoredUsers(updated);
       return updated;
@@ -133,13 +186,14 @@ export function getStoredTetapan(): TetapanSekolah {
     const data = localStorage.getItem(K_TETAPAN);
     if (data) {
       const t: TetapanSekolah = JSON.parse(data);
-      if (/seri\s*bintang/i.test(t.sekolah) || !t.sekolah) {
+      if (/seri\s*bintang/i.test(t.sekolah) || !t.sekolah || /azman/i.test(t.pentadbir)) {
         const migrated: TetapanSekolah = {
           ...t,
           sekolah: 'SMK Salaping, Kota Marudu',
           kod_sekolah: 'XEA5101',
           alamat: 'Peti Surat 248, 89108 Kota Marudu, Sabah',
-          jawatan: 'Pengetua',
+          pentadbir: /azman/i.test(t.pentadbir) || !t.pentadbir ? 'Tuan Sanaleh bin Daud' : t.pentadbir,
+          jawatan: t.jawatan || 'Pengetua',
           moto: 'Ilmuan Gemilang'
         };
         saveStoredTetapan(migrated);
@@ -226,13 +280,23 @@ export function saveStoredLaporanMingguan(records: Record<string, LaporanMinggua
   localStorage.setItem(K_MINGGUAN, JSON.stringify(records));
 }
 
-export function getActiveUser(): UserProfile {
+export function getActiveUser(): UserProfile | null {
   try {
     const data = localStorage.getItem(K_ACTIVE_USER);
     if (data) {
       const user: UserProfile = JSON.parse(data);
       if (/nurul\s*huda/i.test(user.nama)) {
-        const migrated = { ...user, nama: 'Cikgu Fed', email: 'fed@moe.edu.my' };
+        const migrated = { ...user, nama: 'Cikgu Fed', email: 'g-fed@moe-dl.edu.my' };
+        saveActiveUser(migrated);
+        return migrated;
+      }
+      if (/azman/i.test(user.nama) || user.id === 'u-admin-1') {
+        const migrated = { ...user, nama: 'Tuan Sanaleh bin Daud', email: 'g-sanaleh@moe-dl.edu.my', jawatan: 'Pengetua' };
+        saveActiveUser(migrated);
+        return migrated;
+      }
+      if (/rohana/i.test(user.nama) || user.id === 'u-admin-2') {
+        const migrated = { ...user, nama: 'En. Arman bin Aliamat', email: 'g-arman@moe-dl.edu.my', jawatan: 'Penolong Kanan Hal Ehwal Murid (PK HEM)' };
         saveActiveUser(migrated);
         return migrated;
       }
@@ -241,12 +305,19 @@ export function getActiveUser(): UserProfile {
   } catch (e) {
     console.error(e);
   }
-  const users = getStoredUsers();
-  return users[0] || DEFAULT_USERS[0];
+  return null;
 }
 
-export function saveActiveUser(user: UserProfile) {
-  localStorage.setItem(K_ACTIVE_USER, JSON.stringify(user));
+export function saveActiveUser(user: UserProfile | null) {
+  if (user) {
+    localStorage.setItem(K_ACTIVE_USER, JSON.stringify(user));
+  } else {
+    localStorage.removeItem(K_ACTIVE_USER);
+  }
+}
+
+export function logoutUser() {
+  localStorage.removeItem(K_ACTIVE_USER);
 }
 
 export function clearAllJadual() {
