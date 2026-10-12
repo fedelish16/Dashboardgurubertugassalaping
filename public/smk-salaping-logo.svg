@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Clip path for the shield content -->
+    <clipPath id="shield-inner-clip">
+      <path d="M 60 40 
+               Q 250 35 440 40 
+               Q 440 280 440 300 
+               Q 440 370 250 435 
+               Q 60 370 60 300 
+               Z" />
+    </clipPath>
+
+    <!-- Linear gradients for rich depth -->
+    <linearGradient id="tealGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#18B8A6" />
+      <stop offset="100%" stop-color="#149E8E" />
+    </linearGradient>
+    <linearGradient id="spaceGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111538" />
+      <stop offset="50%" stop-color="#1F1B4E" />
+      <stop offset="100%" stop-color="#0A0D26" />
+    </linearGradient>
+    <linearGradient id="scrollGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F03A30" />
+      <stop offset="70%" stop-color="#D32118" />
+      <stop offset="100%" stop-color="#9C140E" />
+    </linearGradient>
+    <linearGradient id="ribbonWhiteGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#F2FAF9" />
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Black Shield Outline / Shadow -->
+  <path d="M 46 26 
+           Q 250 20 454 26 
+           A 16 16 0 0 1 470 42 
+           Q 470 315 470 330 
+           Q 470 410 250 482 
+           Q 30 410 30 330 
+           Q 30 315 30 42 
+           A 16 16 0 0 1 46 26 Z" 
+        fill="#0A0E0D" />
+
+  <!-- Outer Thick White Border -->
+  <path d="M 52 32 
+           Q 250 26 448 32 
+           A 10 10 0 0 1 458 42 
+           Q 458 305 458 320 
+           Q 458 395 250 464 
+           Q 42 395 42 320 
+           Q 42 305 42 42 
+           A 10 10 0 0 1 52 32 Z" 
+        fill="#FFFFFF" />
+
+  <!-- Main Teal Shield Body -->
+  <path d="M 60 40 
+           Q 250 35 440 40 
+           Q 440 280 440 300 
+           Q 440 370 250 435 
+           Q 60 370 60 300 
+           Z" 
+        fill="url(#tealGrad)" />
+
+  <!-- Shield Inner Content -->
+  <g clip-path="url(#shield-inner-clip)">
+    <!-- Header Text: SMK SALAPING -->
+    <text x="250" y="82" 
+          text-anchor="middle" 
+          font-family="'Plus Jakarta Sans', system-ui, Arial, sans-serif" 
+          font-size="34" 
+          font-weight="900" 
+          letter-spacing="2" 
+          fill="#FFFFFF">SMK SALAPING</text>
+
+    <!-- Top Left Quadrant: Bright Yellow with Red Certificate Scroll -->
+    <g transform="translate(68, 100)">
+      <rect x="0" y="0" width="176" height="158" fill="#FDD21B" stroke="#FFFFFF" stroke-width="3" rx="2" />
+      
+      <!-- Rolled Scroll -->
+      <g transform="translate(14, 20) rotate(-32 60 60)">
+        <!-- Scroll Body Cylindrical -->
+        <rect x="18" y="32" width="115" height="38" rx="6" fill="url(#scrollGrad)" />
+        <ellipse cx="18" cy="51" rx="9" ry="19" fill="#B71C14" />
+        <ellipse cx="18" cy="51" rx="6" ry="15" fill="#FFE082" />
+        <ellipse cx="133" cy="51" rx="9" ry="19" fill="#F03A30" />
+        
+        <!-- Ribbon Tie on Scroll -->
+        <rect x="66" y="30" width="12" height="42" rx="3" fill="#38D7C4" />
+        <!-- Ribbon Bow Tails -->
+        <path d="M 68 70 Q 60 92 50 98 Q 65 90 72 72 Z" fill="#20B2AA" />
+        <path d="M 74 70 Q 82 92 92 98 Q 78 90 72 72 Z" fill="#20B2AA" />
+      </g>
+    </g>
+
+    <!-- Top Right Quadrant: Deep Space with Saturn, Satellite & Stars -->
+    <g transform="translate(256, 100)">
+      <rect x="0" y="0" width="176" height="158" fill="url(#spaceGrad)" stroke="#FFFFFF" stroke-width="3" rx="2" />
+      
+      <!-- Stars & Nebulae -->
+      <circle cx="20" cy="50" r="3" fill="#FFFFFF" opacity="0.8" />
+      <circle cx="50" cy="20" r="2.5" fill="#FFFFFF" opacity="0.9" />
+      <circle cx="85" cy="70" r="2" fill="#FFFFFF" opacity="0.8" />
+      <circle cx="150" cy="35" r="3.5" fill="#FFFFFF" opacity="0.9" />
+      <circle cx="160" cy="120" r="2.5" fill="#FFFFFF" opacity="0.7" />
+      <circle cx="30" cy="130" r="3" fill="#FFFFFF" opacity="0.85" />
+      <circle cx="115" cy="140" r="2" fill="#FFFFFF" opacity="0.7" />
+
+      <!-- Satellite in upper left of quadrant -->
+      <g transform="translate(50, 24) rotate(35)">
+        <!-- Satellite body -->
+        <rect x="-8" y="-6" width="16" height="12" rx="2" fill="#FFFFFF" stroke="#D32F2F" stroke-width="2" />
+        <circle cx="0" cy="0" r="3" fill="#D32F2F" />
+        <!-- Solar Panels -->
+        <rect x="-24" y="-5" width="14" height="10" rx="1" fill="#E53935" stroke="#FFFFFF" stroke-width="1.5" />
+        <rect x="10" y="-5" width="14" height="10" rx="1" fill="#E53935" stroke="#FFFFFF" stroke-width="1.5" />
+      </g>
+
+      <!-- Planet Saturn & Concentric Orbital Rings -->
+      <g transform="translate(90, 88)">
+        <!-- Planet behind rings -->
+        <circle cx="0" cy="0" r="24" fill="#E53935" />
+        <!-- Rings Ellipses (Angled) -->
+        <ellipse cx="0" cy="0" rx="66" ry="24" fill="none" stroke="#FFFFFF" stroke-width="3" transform="rotate(-24)" />
+        <ellipse cx="0" cy="0" rx="55" ry="19" fill="none" stroke="#FFFFFF" stroke-width="2.5" transform="rotate(-24)" />
+        <ellipse cx="0" cy="0" rx="42" ry="14" fill="none" stroke="#FFFFFF" stroke-width="2" transform="rotate(-24)" />
+        <!-- Satellite orbiter ball on ring -->
+        <circle cx="52" cy="-22" r="4.5" fill="#FFFFFF" />
+      </g>
+    </g>
+
+    <!-- Lower Section: Open Book -->
+    <g transform="translate(250, 290)">
+      <!-- Book spine/bottom shadow -->
+      <path d="M -102 -6 Q 0 16 102 -6 L 98 14 Q 0 34 -98 14 Z" fill="#991B1B" />
+      
+      <!-- Red Cover Edge -->
+      <path d="M -100 -2 Q 0 18 100 -2 L 96 10 Q 0 28 -96 10 Z" fill="#D32F2F" />
+
+      <!-- Left Page -->
+      <path d="M 0 16 Q -55 -12 -96 2 Q -65 -32 0 -18 Z" fill="#FFFFFF" stroke="#C53030" stroke-width="3" />
+      <!-- Right Page -->
+      <path d="M 0 16 Q 55 -12 96 2 Q 65 -32 0 -18 Z" fill="#FFFFFF" stroke="#C53030" stroke-width="3" />
+      
+      <!-- Inner Page lines/crease -->
+      <path d="M 0 -18 L 0 16" stroke="#991B1B" stroke-width="3" />
+      <path d="M -10 6 Q -50 -10 -84 1" stroke="#EF9A9A" stroke-width="2" fill="none" />
+      <path d="M 10 6 Q 50 -10 84 1" stroke="#EF9A9A" stroke-width="2" fill="none" />
+    </g>
+
+    <!-- Laurel Olive Wreath Leaves -->
+    <g transform="translate(250, 360)">
+      <!-- Left Laurel Branch -->
+      <path d="M 0 10 Q -80 -10 -140 -50" fill="none" stroke="#166534" stroke-width="4.5" stroke-linecap="round" />
+      <!-- Left Leaves Pairs -->
+      <path d="M -30 4 Q -48 10 -40 -6 Q -26 -1 -30 4 Z" fill="#15803D" />
+      <path d="M -55 -4 Q -74 -2 -62 -18 Q -48 -10 -55 -4 Z" fill="#15803D" />
+      <path d="M -85 -16 Q -105 -18 -92 -34 Q -77 -24 -85 -16 Z" fill="#15803D" />
+      <path d="M -115 -32 Q -134 -40 -120 -54 Q -106 -42 -115 -32 Z" fill="#15803D" />
+      <path d="M -135 -48 Q -156 -62 -142 -76 Q -130 -62 -135 -48 Z" fill="#15803D" />
+
+      <!-- Right Laurel Branch -->
+      <path d="M 0 10 Q 80 -10 140 -50" fill="none" stroke="#166534" stroke-width="4.5" stroke-linecap="round" />
+      <!-- Right Leaves Pairs -->
+      <path d="M 30 4 Q 48 10 40 -6 Q 26 -1 30 4 Z" fill="#15803D" />
+      <path d="M 55 -4 Q 74 -2 62 -18 Q 48 -10 55 -4 Z" fill="#15803D" />
+      <path d="M 85 -16 Q 105 -18 92 -34 Q 77 -24 85 -16 Z" fill="#15803D" />
+      <path d="M 115 -32 Q 134 -40 120 -54 Q 106 -42 115 -32 Z" fill="#15803D" />
+      <path d="M 135 -48 Q 156 -62 142 -76 Q 130 -62 135 -48 Z" fill="#15803D" />
+    </g>
+  </g>
+
+  <!-- Bottom Flowing Banner Ribbon -->
+  <g id="bottom-ribbon" transform="translate(250, 436)">
+    <!-- Left Ribbon Fold & Tail -->
+    <path d="M -130 -28 L -205 -22 L -230 4 Q -200 45 -135 15 Z" fill="#0A0E0D" />
+    <path d="M -128 -24 L -200 -18 L -224 4 L -196 22 L -135 12 Z" fill="#FFFFFF" />
+    <path d="M -134 -20 L -194 -14 L -215 4 L -190 18 L -138 10 Z" fill="#16A396" />
+    <text x="-174" y="8" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="24" font-weight="900" fill="#FFFFFF" text-anchor="middle">2006</text>
+
+    <!-- Right Ribbon Fold & Tail -->
+    <path d="M 130 -28 L 205 -22 L 230 4 Q 200 45 135 15 Z" fill="#0A0E0D" />
+    <path d="M 128 -24 L 200 -18 L 224 4 L 196 22 L 135 12 Z" fill="#FFFFFF" />
+    <path d="M 134 -20 L 194 -14 L 215 4 L 190 18 L 138 10 Z" fill="#16A396" />
+    <text x="174" y="8" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="24" font-weight="900" fill="#FFFFFF" text-anchor="middle">1427</text>
+
+    <!-- Center Main Ribbon Background / Shadow -->
+    <path d="M -145 -36 Q 0 -6 145 -36 Q 165 42 0 65 Q -165 42 -145 -36 Z" fill="#0A0E0D" />
+    <!-- White Ribbon Outer -->
+    <path d="M -140 -30 Q 0 -2 140 -30 Q 155 36 0 57 Q -155 36 -140 -30 Z" fill="url(#ribbonWhiteGrad)" stroke="#16A396" stroke-width="4" />
+
+    <!-- Ribbon Motto Text: ILMUAN GEMILANG -->
+    <path id="ribbon-text-path" d="M -135 12 Q 0 42 135 12" fill="none" stroke="none" />
+    <text font-family="'Plus Jakarta Sans', system-ui, Arial, sans-serif" font-size="28" font-weight="900" fill="#118377" letter-spacing="2">
+      <textPath href="#ribbon-text-path" startOffset="50%" text-anchor="middle">
+        ILMUAN GEMILANG
+      </textPath>
+    </text>
+  </g>
+</svg>
