@@ -98,6 +98,17 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
       moto: moto.trim()
     };
     onSaveTetapan(updated);
+
+    if (pentadbir.trim()) {
+      const updatedUsers = users.map((u) => {
+        if (u.peranan === 'pentadbir' && (u.id === 'u-admin-1' || users.filter((x) => x.peranan === 'pentadbir').length === 1)) {
+          return { ...u, nama: pentadbir.trim(), jawatan: jawatan.trim() || u.jawatan };
+        }
+        return u;
+      });
+      onSaveUsers(updatedUsers);
+    }
+
     onToast('Maklumat profil sekolah berjaya disimpan!');
   };
 
@@ -340,36 +351,31 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
   // Download Sample Roster Template
   const handleDownloadJadualTemplate = (format: 'xlsx' | 'csv') => {
     const sampleMonday = getMonday(new Date().toISOString().slice(0, 10));
-    const sampleData = [
-      {
-        'Tarikh Mula Minggu': sampleMonday,
-        'Nama Guru Bertugas': 'Cikgu Fed',
-        'Kumpulan': 'Kumpulan 1',
-        'Catatan / Skop': 'Ketua Guru Bertugas (Laporan Rasmi)',
-        'Sidang': 'Pagi'
-      },
-      {
-        'Tarikh Mula Minggu': sampleMonday,
-        'Nama Guru Bertugas': 'Cikgu Mohd Faizal bin Zakaria',
-        'Kumpulan': 'Kumpulan 1',
-        'Catatan / Skop': 'Kawalan Pintu Pagar & Perhimpunan',
-        'Sidang': 'Pagi'
-      },
-      {
-        'Tarikh Mula Minggu': sampleMonday,
-        'Nama Guru Bertugas': 'Ustaz Ahmad Danial bin Mokhtar',
-        'Kumpulan': 'Kumpulan 1',
-        'Catatan / Skop': 'Disiplin Waktu Rehat & Kantin',
-        'Sidang': 'Petang'
-      },
-      {
-        'Tarikh Mula Minggu': sampleMonday,
-        'Nama Guru Bertugas': 'Cikgu Tan Mei Ling',
-        'Kumpulan': 'Kumpulan 1',
-        'Catatan / Skop': 'Pemantauan Kebersihan & Blok Kelas',
-        'Sidang': 'Petang'
-      }
-    ];
+    const activeGurus = users.filter((u) => u.peranan === 'guru');
+    const sampleData = activeGurus.length > 0
+      ? activeGurus.slice(0, 4).map((g, idx) => ({
+          'Tarikh Mula Minggu': sampleMonday,
+          'Nama Guru Bertugas': g.nama,
+          'Kumpulan': `Kumpulan ${Math.floor(idx / 2) + 1}`,
+          'Catatan / Skop': idx === 0 ? 'Ketua Guru Bertugas (Laporan Rasmi)' : 'Pengawasan Kawasan & Disiplin',
+          'Sidang': (g.sidang || 'Pagi').charAt(0).toUpperCase() + (g.sidang || 'pagi').slice(1)
+        }))
+      : [
+          {
+            'Tarikh Mula Minggu': sampleMonday,
+            'Nama Guru Bertugas': 'Nama Guru Bertugas 1',
+            'Kumpulan': 'Kumpulan 1',
+            'Catatan / Skop': 'Ketua Guru Bertugas (Laporan Rasmi)',
+            'Sidang': 'Pagi'
+          },
+          {
+            'Tarikh Mula Minggu': sampleMonday,
+            'Nama Guru Bertugas': 'Nama Guru Bertugas 2',
+            'Kumpulan': 'Kumpulan 1',
+            'Catatan / Skop': 'Kawalan Pintu Pagar & Perhimpunan',
+            'Sidang': 'Pagi'
+          }
+        ];
 
     const ws = XLSX.utils.json_to_sheet(sampleData);
     const wb = XLSX.utils.book_new();
@@ -561,38 +567,34 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
 
   // Download Teacher Template
   const handleDownloadTeacherTemplate = () => {
-    const sampleData = [
-      {
-        'Nama Guru': 'Cikgu Fed',
-        'Sidang': 'Pagi',
-        'Jawatan': 'Ketua Guru Bertugas',
-        'Peranan': 'Guru'
-      },
-      {
-        'Nama Guru': 'Cikgu Mohd Faizal bin Zakaria',
-        'Sidang': 'Pagi',
-        'Jawatan': 'Guru Akademik',
-        'Peranan': 'Guru'
-      },
-      {
-        'Nama Guru': 'Ustaz Ahmad Danial bin Mokhtar',
-        'Sidang': 'Petang',
-        'Jawatan': 'Guru Pendidikan Islam',
-        'Peranan': 'Guru'
-      },
-      {
-        'Nama Guru': 'Cikgu Tan Mei Ling',
-        'Sidang': 'Petang',
-        'Jawatan': 'Guru Bahasa Inggeris',
-        'Peranan': 'Guru'
-      },
-      {
-        'Nama Guru': 'Tuan Sanaleh bin Daud',
-        'Sidang': 'Kedua-dua',
-        'Jawatan': 'Pengetua',
-        'Peranan': 'Pentadbir'
-      }
-    ];
+    const existingUsers = users.filter((u) => u.peranan === 'guru');
+    const sampleData = existingUsers.length > 0
+      ? existingUsers.slice(0, 5).map((u) => ({
+          'Nama Guru': u.nama,
+          'Sidang': (u.sidang || 'Pagi').charAt(0).toUpperCase() + (u.sidang || 'pagi').slice(1),
+          'Jawatan': u.jawatan || 'Guru Akademik',
+          'Peranan': u.peranan === 'pentadbir' ? 'Pentadbir' : 'Guru'
+        }))
+      : [
+          {
+            'Nama Guru': 'Nama Guru 1',
+            'Sidang': 'Pagi',
+            'Jawatan': 'Guru Akademik',
+            'Peranan': 'Guru'
+          },
+          {
+            'Nama Guru': 'Nama Guru 2',
+            'Sidang': 'Pagi',
+            'Jawatan': 'Guru Akademik',
+            'Peranan': 'Guru'
+          },
+          {
+            'Nama Guru': 'Nama Guru 3',
+            'Sidang': 'Petang',
+            'Jawatan': 'Guru Akademik',
+            'Peranan': 'Guru'
+          }
+        ];
 
     const ws = XLSX.utils.json_to_sheet(sampleData);
     const wb = XLSX.utils.book_new();
@@ -827,7 +829,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                   type="text"
                   value={pentadbir}
                   onChange={(e) => setPentadbir(e.target.value)}
-                  placeholder="Tuan Sanaleh bin Daud"
+                  placeholder="Nama Pengetua / Guru Besar"
                   className="w-full text-xs sm:text-sm px-3.5 py-2.5 border border-stone-300 rounded-xl bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600 font-semibold"
                   required
                 />
@@ -1472,7 +1474,7 @@ export const TetapanView: React.FC<TetapanViewProps> = ({
                         type="text"
                         value={newNama}
                         onChange={(e) => setNewNama(e.target.value)}
-                        placeholder="Contoh: Cikgu Sarah Lee"
+                        placeholder="Nama penuh guru"
                         className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-maroon-600 font-medium"
                         required
                       />

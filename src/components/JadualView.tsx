@@ -194,26 +194,28 @@ export const JadualView: React.FC<JadualViewProps> = ({
 
   // Download Sample CSV template
   const downloadTemplate = (format: 'csv' | 'xlsx') => {
-    const templateData = [
-      {
-        'Tarikh Mula Minggu': thisMonday,
-        'Nama Guru Bertugas': 'Cikgu Fed',
-        'Kumpulan': 'Kumpulan 1',
-        'Catatan': 'Ketua Guru Bertugas (Laporan Rasmi)'
-      },
-      {
-        'Tarikh Mula Minggu': thisMonday,
-        'Nama Guru Bertugas': 'Cikgu Mohd Faizal bin Zakaria',
-        'Kumpulan': 'Kumpulan 1',
-        'Catatan': 'Pengawasan Kantin & Disiplin'
-      },
-      {
-        'Tarikh Mula Minggu': thisMonday,
-        'Nama Guru Bertugas': 'Ustaz Ahmad Danial bin Shamsul',
-        'Kumpulan': 'Kumpulan 1',
-        'Catatan': 'Pintu Pagar Utama & Kawalan Trafik'
-      }
-    ];
+    const activeGurus = users.filter((u) => u.peranan === 'guru');
+    const templateData = activeGurus.length > 0
+      ? activeGurus.slice(0, 3).map((g, idx) => ({
+          'Tarikh Mula Minggu': thisMonday,
+          'Nama Guru Bertugas': g.nama,
+          'Kumpulan': 'Kumpulan 1',
+          'Catatan': idx === 0 ? 'Ketua Guru Bertugas (Laporan Rasmi)' : 'Pengawasan Kantin & Disiplin'
+        }))
+      : [
+          {
+            'Tarikh Mula Minggu': thisMonday,
+            'Nama Guru Bertugas': 'Nama Guru Bertugas 1',
+            'Kumpulan': 'Kumpulan 1',
+            'Catatan': 'Ketua Guru Bertugas (Laporan Rasmi)'
+          },
+          {
+            'Tarikh Mula Minggu': thisMonday,
+            'Nama Guru Bertugas': 'Nama Guru Bertugas 2',
+            'Kumpulan': 'Kumpulan 1',
+            'Catatan': 'Pengawasan Kantin & Disiplin'
+          }
+        ];
 
     const ws = XLSX.utils.json_to_sheet(templateData);
     const wb = XLSX.utils.book_new();
@@ -425,7 +427,7 @@ export const JadualView: React.FC<JadualViewProps> = ({
                 list="registered-teachers"
                 value={formNama}
                 onChange={(e) => setFormNama(e.target.value)}
-                placeholder="Contoh: Cikgu Fed"
+                placeholder="Nama guru yang bertugas"
                 className="w-full text-xs px-3 py-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-maroon-600"
                 required
               />

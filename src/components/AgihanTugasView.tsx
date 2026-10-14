@@ -270,44 +270,46 @@ export const AgihanTugasView: React.FC<AgihanTugasViewProps> = ({
         'Adakah anda pasti untuk mengosongkan senarai semua guru (kecuali pentadbir rasmi)? Ini memudahkan anda memuat naik senarai guru baharu.'
       )
     ) {
-      const retained = users.filter((u) => u.peranan === 'pentadbir' || u.nama === 'Cikgu Fed');
-      onSaveUsers(retained);
+      const retained = users.filter((u) => u.peranan === 'pentadbir');
+      onSaveUsers(retained.length > 0 ? retained : users.slice(0, 1));
       onToast('Senarai guru telah dikosongkan.');
     }
   };
 
   // Download Sample Template for Morning & Afternoon Teachers
   const handleDownloadTeacherTemplate = (format: 'xlsx' | 'csv') => {
-    const sample = [
-      {
-        'Nama Guru': 'Cikgu Muhammad Faiz bin Azlan',
-        'Sidang': 'Pagi',
-        'Jawatan': 'Guru Akademik / Penolong Kanan Kokurikulum',
-        'Emel': 'faiz.azlan@moe.edu.my',
-        'No Telefon': '012-3456789'
-      },
-      {
-        'Nama Guru': 'Cikgu Dayang Roziana binti Jamil',
-        'Sidang': 'Pagi',
-        'Jawatan': 'Ketua Panitia Sains',
-        'Emel': 'roziana@moe.edu.my',
-        'No Telefon': '013-4567890'
-      },
-      {
-        'Nama Guru': 'Cikgu Alexius Justin',
-        'Sidang': 'Petang',
-        'Jawatan': 'Guru Akademik Tingkatan 1 & 2',
-        'Emel': 'alexius@moe.edu.my',
-        'No Telefon': '014-5678901'
-      },
-      {
-        'Nama Guru': 'Ustazah Maryam binti Kassim',
-        'Sidang': 'Petang',
-        'Jawatan': 'Guru Pendidikan Islam',
-        'Emel': 'maryam@moe.edu.my',
-        'No Telefon': '019-8765432'
-      }
-    ];
+    const existingGurus = users.filter((u) => u.peranan === 'guru');
+    const sample = existingGurus.length > 0
+      ? existingGurus.slice(0, 4).map((g) => ({
+          'Nama Guru': g.nama,
+          'Sidang': (g.sidang || 'Pagi').charAt(0).toUpperCase() + (g.sidang || 'pagi').slice(1),
+          'Jawatan': g.jawatan || 'Guru Akademik',
+          'Emel': g.email,
+          'No Telefon': '-'
+        }))
+      : [
+          {
+            'Nama Guru': 'Nama Penuh Guru 1',
+            'Sidang': 'Pagi',
+            'Jawatan': 'Guru Akademik',
+            'Emel': 'guru1@moe-dl.edu.my',
+            'No Telefon': '-'
+          },
+          {
+            'Nama Guru': 'Nama Penuh Guru 2',
+            'Sidang': 'Pagi',
+            'Jawatan': 'Guru Akademik',
+            'Emel': 'guru2@moe-dl.edu.my',
+            'No Telefon': '-'
+          },
+          {
+            'Nama Guru': 'Nama Penuh Guru 3',
+            'Sidang': 'Petang',
+            'Jawatan': 'Guru Akademik',
+            'Emel': 'guru3@moe-dl.edu.my',
+            'No Telefon': '-'
+          }
+        ];
 
     const ws = XLSX.utils.json_to_sheet(sample);
     const wb = XLSX.utils.book_new();

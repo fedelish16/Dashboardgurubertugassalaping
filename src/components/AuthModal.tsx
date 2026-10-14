@@ -362,9 +362,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs font-bold text-stone-600 uppercase tracking-wider flex items-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5 text-kuning-500" />
-                    Akses Pantas Akaun Contoh:
+                    Akses Pantas Akaun Berdaftar:
                   </span>
-                  <span className="text-[11px] text-stone-400">Pilih satu untuk log masuk terus</span>
+                  <span className="text-[11px] text-stone-400">Pilih untuk log masuk terus</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {users.slice(0, 4).map((u) => {
@@ -420,7 +420,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     <input
                       type="text"
                       required
-                      placeholder="contoh: Cikgu Norazlina binti Ahmad"
+                      placeholder="Masukkan nama penuh guru"
                       value={signupNama}
                       onChange={(e) => setSignupNama(e.target.value)}
                       className="w-full pl-10 pr-4 py-2 bg-stone-50 border border-stone-200 rounded-xl text-stone-900 text-sm focus:ring-2 focus:ring-maroon-600 focus:bg-white focus:outline-hidden"

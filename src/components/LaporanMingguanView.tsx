@@ -611,7 +611,7 @@ export const LaporanMingguanView: React.FC<LaporanMingguanViewProps> = ({
               <p className="text-stone-600 mb-14">Disediakan oleh:</p>
               <div className="border-t border-stone-800 pt-1.5">
                 <p className="font-bold text-stone-900">
-                  {weekTeachers[0]?.nama || 'Cikgu Fed'}
+                  {weekTeachers[0]?.nama || currentUser?.nama || '(Ketua Guru Bertugas)'}
                 </p>
                 <p className="text-stone-500">Ketua Guru Bertugas Mingguan</p>
                 <p className="text-stone-400 text-[10px]">Tarikh: {formatMalayDate(addDays(selectedWeekMonday, 4))}</p>
@@ -638,7 +638,7 @@ export const LaporanMingguanView: React.FC<LaporanMingguanViewProps> = ({
               </div>
               <div className="border-t border-stone-800 pt-1.5">
                 <p className="font-bold text-stone-900">
-                  {tetapan.pentadbir || 'Tuan Sanaleh bin Daud'}
+                  {tetapan.pentadbir || '(Nama Pentadbir Pengesah)'}
                 </p>
                 <p className="text-stone-500">{tetapan.jawatan || 'Pengetua'}</p>
                 <p className="text-stone-400 text-[10px]">Tarikh: {formatMalayDate(addDays(selectedWeekMonday, 4))}</p>

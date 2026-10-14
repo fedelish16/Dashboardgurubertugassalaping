@@ -57,37 +57,9 @@ export const DEFAULT_USERS: UserProfile[] = [
     email: 'g-sanaleh@moe-dl.edu.my',
     peranan: 'pentadbir',
     jawatan: 'Pengetua',
+    sidang: 'pagi',
     gred: 'DG52',
     kata_laluan: 'admin123'
-  },
-  {
-    id: 'u-admin-2',
-    nama: 'En. Arman bin Aliamat',
-    email: 'g-arman@moe-dl.edu.my',
-    peranan: 'pentadbir',
-    jawatan: 'Penolong Kanan Hal Ehwal Murid (PK HEM)',
-    gred: 'DG48',
-    kata_laluan: 'admin123'
-  },
-  {
-    id: 'u-2',
-    nama: 'Ustaz Hafiz bin Ismail',
-    email: 'g-hafiz@moe-dl.edu.my',
-    peranan: 'guru',
-    jawatan: 'Guru Pendidikan Islam',
-    sidang: 'pagi',
-    gred: 'DG41',
-    kata_laluan: 'delima123'
-  },
-  {
-    id: 'u-3',
-    nama: 'Cikgu Dayang Nuraisyah',
-    email: 'g-nuraisyah@moe-dl.edu.my',
-    peranan: 'guru',
-    jawatan: 'Guru Bahasa Melayu',
-    sidang: 'petang',
-    gred: 'DG41',
-    kata_laluan: 'delima123'
   }
 ];
 
@@ -126,49 +98,68 @@ const K_HARIAN = 'sgb_harian_v3';
 const K_MINGGUAN = 'sgb_mingguan_v3';
 const K_ACTIVE_USER = 'sgb_active_user_v3';
 
+// Known untouched demo names to remove from roster
+const DEMO_NAMES_TO_FILTER = [
+  'ustaz hafiz bin ismail',
+  'cikgu dayang nuraisyah',
+  'ustaz ahmad danial bin shamsul',
+  'ustaz ahmad danial bin mokhtar',
+  'cikgu sarah lee',
+  'cikgu norazlina binti ahmad',
+  'cikgu azman bin kassim',
+  'cikgu rohana binti salleh',
+  'cikgu nurul huda'
+];
+
+const DEMO_EMAILS_TO_FILTER = [
+  'g-hafiz@moe-dl.edu.my',
+  'g-nuraisyah@moe-dl.edu.my',
+  'azman.kassim@moe.edu.my',
+  'rohana.salleh@moe.edu.my'
+];
+
 export function getStoredUsers(): UserProfile[] {
   try {
     const data = localStorage.getItem(K_USERS);
     if (data) {
       const users: UserProfile[] = JSON.parse(data);
-      // Migrate any previous names if present
       let changed = false;
-      const updated = users.map((u) => {
+
+      // Filter out untouched demo users, keeping all user-entered/edited teachers
+      const filtered = users.filter((u) => {
+        const nameLower = (u.nama || '').trim().toLowerCase();
+        const emailLower = (u.email || '').trim().toLowerCase();
+
+        const isDemo =
+          DEMO_NAMES_TO_FILTER.includes(nameLower) ||
+          DEMO_EMAILS_TO_FILTER.includes(emailLower);
+
+        if (isDemo) {
+          changed = true;
+          return false;
+        }
+        return true;
+      });
+
+      // Ensure all valid accounts have a working password
+      const updated = filtered.map((u) => {
         let modified = false;
-        let newU = { ...u };
-        if (/nurul\s*huda/i.test(newU.nama)) {
-          newU = { ...newU, nama: 'Cikgu Fed', email: 'g-fed@moe-dl.edu.my' };
-          modified = true;
-        }
-        if (/azman/i.test(newU.nama) || newU.id === 'u-admin-1') {
-          newU = { ...newU, nama: 'Tuan Sanaleh bin Daud', email: 'g-sanaleh@moe-dl.edu.my', jawatan: 'Pengetua' };
-          modified = true;
-        }
-        if (/rohana/i.test(newU.nama) || newU.id === 'u-admin-2') {
-          newU = { ...newU, nama: 'En. Arman bin Aliamat', email: 'g-arman@moe-dl.edu.my', jawatan: 'Penolong Kanan Hal Ehwal Murid (PK HEM)' };
-          modified = true;
-        }
+        const newU = { ...u };
         if (!newU.kata_laluan) {
           newU.kata_laluan = newU.peranan === 'pentadbir' ? 'admin123' : 'delima123';
-          modified = true;
-        }
-        if (newU.email === 'fed@moe.edu.my') {
-          newU.email = 'g-fed@moe-dl.edu.my';
-          modified = true;
-        }
-        if (newU.email === 'azman.kassim@moe.edu.my' || newU.email === 'g-azman@moe-dl.edu.my') {
-          newU.email = 'g-sanaleh@moe-dl.edu.my';
-          modified = true;
-        }
-        if (newU.email === 'rohana.salleh@moe.edu.my' || newU.email === 'g-rohana@moe-dl.edu.my') {
-          newU.email = 'g-arman@moe-dl.edu.my';
           modified = true;
         }
         if (modified) changed = true;
         return newU;
       });
-      if (changed) saveStoredUsers(updated);
-      return updated;
+
+      if (changed || updated.length !== users.length) {
+        saveStoredUsers(updated);
+      }
+
+      if (updated.length > 0) {
+        return updated;
+      }
     }
   } catch (e) {
     console.error(e);
@@ -186,15 +177,16 @@ export function getStoredTetapan(): TetapanSekolah {
     const data = localStorage.getItem(K_TETAPAN);
     if (data) {
       const t: TetapanSekolah = JSON.parse(data);
-      if (/seri\s*bintang/i.test(t.sekolah) || !t.sekolah || /azman/i.test(t.pentadbir)) {
+      // Migrate legacy school name placeholder if still present
+      if (/seri\s*bintang/i.test(t.sekolah) || !t.sekolah) {
         const migrated: TetapanSekolah = {
           ...t,
           sekolah: 'SMK Salaping, Kota Marudu',
-          kod_sekolah: 'XEA5101',
-          alamat: 'Peti Surat 248, 89108 Kota Marudu, Sabah',
-          pentadbir: /azman/i.test(t.pentadbir) || !t.pentadbir ? 'Tuan Sanaleh bin Daud' : t.pentadbir,
+          kod_sekolah: t.kod_sekolah || 'XEA5101',
+          alamat: t.alamat || 'Peti Surat 248, 89108 Kota Marudu, Sabah',
+          pentadbir: t.pentadbir || 'Tuan Sanaleh bin Daud',
           jawatan: t.jawatan || 'Pengetua',
-          moto: 'Ilmuan Gemilang'
+          moto: t.moto || 'Ilmuan Gemilang'
         };
         saveStoredTetapan(migrated);
         return migrated;
@@ -216,17 +208,7 @@ export function getStoredJadual(): JadualBertugas[] {
   try {
     const data = localStorage.getItem(K_JADUAL);
     if (data) {
-      const arr: JadualBertugas[] = JSON.parse(data);
-      let changed = false;
-      const updated = arr.map((item) => {
-        if (/nurul\s*huda/i.test(item.nama)) {
-          changed = true;
-          return { ...item, nama: 'Cikgu Fed' };
-        }
-        return item;
-      });
-      if (changed) saveStoredJadual(updated);
-      return updated;
+      return JSON.parse(data);
     }
   } catch (e) {
     console.error(e);
@@ -243,16 +225,7 @@ export function getStoredLaporanHarian(): Record<string, LaporanHarian> {
   try {
     const data = localStorage.getItem(K_HARIAN);
     if (data) {
-      const records: Record<string, LaporanHarian> = JSON.parse(data);
-      let changed = false;
-      Object.values(records).forEach((r) => {
-        if (/nurul\s*huda/i.test(r.pelapor)) {
-          r.pelapor = 'Cikgu Fed';
-          changed = true;
-        }
-      });
-      if (changed) saveStoredLaporanHarian(records);
-      return records;
+      return JSON.parse(data);
     }
   } catch (e) {
     console.error(e);
@@ -285,27 +258,21 @@ export function getActiveUser(): UserProfile | null {
     const data = localStorage.getItem(K_ACTIVE_USER);
     if (data) {
       const user: UserProfile = JSON.parse(data);
-      if (/nurul\s*huda/i.test(user.nama)) {
-        const migrated = { ...user, nama: 'Cikgu Fed', email: 'g-fed@moe-dl.edu.my' };
-        saveActiveUser(migrated);
-        return migrated;
-      }
-      if (/azman/i.test(user.nama) || user.id === 'u-admin-1') {
-        const migrated = { ...user, nama: 'Tuan Sanaleh bin Daud', email: 'g-sanaleh@moe-dl.edu.my', jawatan: 'Pengetua' };
-        saveActiveUser(migrated);
-        return migrated;
-      }
-      if (/rohana/i.test(user.nama) || user.id === 'u-admin-2') {
-        const migrated = { ...user, nama: 'En. Arman bin Aliamat', email: 'g-arman@moe-dl.edu.my', jawatan: 'Penolong Kanan Hal Ehwal Murid (PK HEM)' };
-        saveActiveUser(migrated);
-        return migrated;
+      const nameLower = (user.nama || '').trim().toLowerCase();
+      // If the previously active user was a removed demo user, fallback to first available
+      if (DEMO_NAMES_TO_FILTER.includes(nameLower)) {
+        const allUsers = getStoredUsers();
+        const fallback = allUsers[0] || null;
+        saveActiveUser(fallback);
+        return fallback;
       }
       return user;
     }
   } catch (e) {
     console.error(e);
   }
-  return null;
+  const allUsers = getStoredUsers();
+  return allUsers[0] || null;
 }
 
 export function saveActiveUser(user: UserProfile | null) {
